@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Dzah</string>
+
+    <!-- commons -->
+    <string name="commons_img_tips">图片提示</string>
+
+    <!-- Notification -->
+    <string name="notification_title">通知标题</string>
+    <string name="notification_text">通知内容</string>
+    <string name="notification_icon">通知图标</string>
+
+    <!-- sample -->
+    <!-- Basic Gesture Detect -->
+    <string name="gesture_detect_intro_msg">
+        <![CDATA[
+            欢迎来到基本手势检测！
+            为了试验该示例，请在文本上进行拖动或按下的操作，看看发生了什么？
+        ]]>
+    </string>
+    <!-- log -->
+    <string name="log_clear_text">消除文本</string>
+
+    <!-- api demos -->
+    <string name="tab_host1_tv1">tab1</string>
+    <string name="tab_host1_tv2">tab2</string>
+    <string name="tab_host1_tv3">tab3</string>
+</resources>

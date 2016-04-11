@@ -1,0 +1,32 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="android:Theme.Light.NoTitleBar">
+        <!-- Customize your theme here. -->
+        <item name="android:windowNoTitle">true</item>
+    </style>
+
+    <!-- 自定义的样式父样式 -->
+    <style name="Gesture"/>
+    <style name="CustomLog"/>
+
+    <!-- sample -->
+    <!-- Basic Gesture Detect -->
+    <style name="Gesture.BasicMsg">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+    </style>
+
+    <!-- log -->
+    <style name="CustomLog.SampleOutput">
+        <item name="android:padding">16dp</item>
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:lineSpacingMultiplier">1.1</item>
+    </style>
+    <style name="CustomLog.Log" parent="CustomLog.SampleOutput">
+        <item name="android:typeface">monospace</item>
+    </style>
+
+    <!-- sample -->
+
+</resources>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notification_title"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+    <TextView
+        android:id="@+id/basic_notification_title_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notification_text"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+    <TextView
+        android:id="@+id/basic_notification_text_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/notification_icon"
+        android:textAppearance="?android:textAppearanceLarge"
+        />
+    <ImageView
+        android:id="@+id/basic_notification_icon_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:contentDescription="@string/commons_img_tips"
+        />
+
+</LinearLayout>

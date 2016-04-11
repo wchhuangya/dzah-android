@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- 通用颜色 -->
+    <color name="common_toast_blue_bg">#ff17b6ed</color><!-- 自定义Toast的蓝色背景 -->
+</resources>

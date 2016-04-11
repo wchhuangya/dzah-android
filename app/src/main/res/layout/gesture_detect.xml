@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:id="@+id/guesture_detect_ll"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/gesture_detect_msg_tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:text="@string/gesture_detect_intro_msg"
+        android:padding="16dp"
+        style="@style/Gesture.BasicMsg"
+        />
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@android:color/darker_gray"
+        />
+    <fragment
+        android:name="com.ch.wchhuangya.dzah.android.util.logger.LogFragment"
+        android:id="@+id/gesture_detect_fg"
+        android:layout_weight="1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>
