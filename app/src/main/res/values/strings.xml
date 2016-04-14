@@ -24,4 +24,25 @@
     <string name="tab_host1_tv1">tab1</string>
     <string name="tab_host1_tv2">tab2</string>
     <string name="tab_host1_tv3">tab3</string>
+
+    <!-- files -->
+    <string name="internal_storage_root_path">获取内部存储根目录</string>
+    <string name="internal_storage_cache_path">获取内部存储缓存目录</string>
+    <string name="internal_storage_create_file">使用文本框内容创建内部文件</string>
+    <string name="internal_storage_temp_path">创建临时文件</string>
+    <string name="external_storage_public_path">获取外部存储公共目录</string>
+    <string name="external_storage_private_path">获取外部存储私有目录</string>
+    <string-array name="external_storage_dir_type">
+        <item>根目录</item>
+        <item>闹钟</item>
+        <item>相机</item>
+        <item>文档</item>
+        <item>下载</item>
+        <item>电影</item>
+        <item>音乐（声音）</item>
+        <item>通知（声音）</item>
+        <item>图片</item>
+        <item>明信片（声音）</item>
+        <item>铃声（声音）</item>
+    </string-array>
 </resources>

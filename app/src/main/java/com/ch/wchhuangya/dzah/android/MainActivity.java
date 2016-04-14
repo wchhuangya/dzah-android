@@ -3,6 +3,8 @@ package com.ch.wchhuangya.dzah.android;
 import android.content.Intent;
 import android.os.Bundle;
 
+import com.ch.wchhuangya.dzah.android.activity.files.ExternalStorageActivity;
+import com.ch.wchhuangya.dzah.android.activity.files.InternalStorageActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
 import com.ch.wchhuangya.dzah.android.service.ContactsService;
@@ -23,11 +25,11 @@ public class MainActivity extends BaseActivity {
         //if(SharedPreferencesHelper.getString(activity, Constant.SP_NAME_COMPONENTS, Constant.CPN_XPUSH_TOKEN) == null)
             XGPush.registerPush(activity, true);
 
-        Intent it = new Intent(activity, ContactsService.class);
-        it.putExtra("msg", "hahahahhahahahahha");
-        startService(it);
+        Intent it = new Intent(activity, ExternalStorageActivity.class);
+//        it.putExtra("msg", "hahahahhahahahahha");
+//        startService(it);
 
-        intent = new Intent(activity, SmsPVActivity.class);
-        startActivity(intent);
+//        intent = new Intent(activity, SmsPVActivity.class);
+        startActivity(it);
     }
 }
