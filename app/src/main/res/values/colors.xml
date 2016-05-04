@@ -3,4 +3,10 @@
 
     <!-- 通用颜色 -->
     <color name="common_toast_blue_bg">#ff17b6ed</color><!-- 自定义Toast的蓝色背景 -->
+
+    <!-- weichat -->
+    <color name="weichat_head_bg">#393a3f</color>
+    <color name="weichat_divider">#e0dfdc</color>
+    <color name="weichat_bottom_bg">#fcfcfc</color>
+    <color name="weichat_listview_divider">#232228</color>
 </resources>

@@ -29,4 +29,12 @@
 
     <!-- sample -->
 
+    <!-- popupwindow -->
+    <style name="PopupW" />
+
+    <style name="PopupW.weichat_anim">
+        <item name="android:windowEnterAnimation">@anim/weichat_fade_in</item>
+        <item name="android:windowExitAnimation">@anim/weichat_fade_out</item>
+    </style>
+
 </resources>
