@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="50dp"
+              android:background="@drawable/vp_top_bg"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
+              android:gravity="center_vertical"
+              android:orientation="horizontal"
+    >
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="微信"
+        android:textSize="18sp"
+        android:textColor="@android:color/white"
+        android:layout_marginLeft="10dp"
+        />
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@mipmap/vp_search"
+        android:layout_marginRight="10dp"
+        android:contentDescription="@string/commons_img_tips"/>
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:background="@mipmap/vp_add"
+        android:contentDescription="@string/commons_img_tips"/>
+
+</LinearLayout>

@@ -40,6 +40,9 @@
         <!-- popupwindow -->
         <activity android:name=".activity.popupwindow.WeiChatPWActivity" android:screenOrientation="portrait" />
 
+        <!-- viewpager -->
+        <activity android:name=".activity.viewpager.WeiChatVPActivity" android:screenOrientation="portrait" />
+
         <!-- ../service -->
         <service android:name=".service.ContactsService" android:exported="false" />
         <service android:name=".service.SmsService" android:enabled="true" />

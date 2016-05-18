@@ -7,6 +7,7 @@ import com.ch.wchhuangya.dzah.android.activity.files.ExternalStorageActivity;
 import com.ch.wchhuangya.dzah.android.activity.files.InternalStorageActivity;
 import com.ch.wchhuangya.dzah.android.activity.popupwindow.WeiChatPWActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
+import com.ch.wchhuangya.dzah.android.activity.viewpager.WeiChatVPActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
 import com.ch.wchhuangya.dzah.android.service.ContactsService;
 
@@ -26,7 +27,7 @@ public class MainActivity extends BaseActivity {
         //if(SharedPreferencesHelper.getString(activity, Constant.SP_NAME_COMPONENTS, Constant.CPN_XPUSH_TOKEN) == null)
             XGPush.registerPush(activity, true);
 
-        Intent it = new Intent(activity, WeiChatPWActivity.class);
+        Intent it = new Intent(activity, WeiChatVPActivity.class);
 //        it.putExtra("msg", "hahahahhahahahahha");
 //        startService(it);
 
