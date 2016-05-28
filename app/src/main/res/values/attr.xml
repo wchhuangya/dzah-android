@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <attr name="rightMargin" format="dimension" />
+
+    <declare-styleable name="DiyHorizontalScrollView"><!-- 抽屉效果第一个页面展示后与右边的间距 -->
+        <attr name="rightMargin" />
+    </declare-styleable>
+</resources>

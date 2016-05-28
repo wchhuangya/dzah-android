@@ -43,6 +43,9 @@
         <!-- viewpager -->
         <activity android:name=".activity.viewpager.WeiChatVPActivity" android:screenOrientation="portrait" />
 
+        <!-- diycomponents -->
+        <activity android:name=".activity.diycontrol.SimplestDrawerActivity" android:screenOrientation="portrait" />
+
         <!-- ../service -->
         <service android:name=".service.ContactsService" android:exported="false" />
         <service android:name=".service.SmsService" android:enabled="true" />

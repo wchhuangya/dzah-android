@@ -2,6 +2,7 @@ package com.ch.wchhuangya.dzah.android.util;
 
 import android.app.ActivityManager;
 import android.content.Context;
+import android.util.TypedValue;
 
 import java.util.List;
 
@@ -29,5 +30,16 @@ public class ActivityHelper {
             }
         }
         return isRunning;
+    }
+
+    /**
+     * 在特定机型上的单位转换
+     * @param context 上下文
+     * @param unit 要转换的单位，比如：TypeValue.COMPLEX_UNIT_DIP
+     * @param value 要转换的值
+     * @return
+     */
+    public static int changeUnit(Context context, int unit, float value) {
+        return (int) TypedValue.applyDimension(unit, value, context.getResources().getDisplayMetrics());
     }
 }

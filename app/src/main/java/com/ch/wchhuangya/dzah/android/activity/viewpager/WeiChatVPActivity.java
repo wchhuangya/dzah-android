@@ -16,8 +16,6 @@ import android.widget.TextView;
 import com.ch.wchhuangya.dzah.android.BaseActivity;
 import com.ch.wchhuangya.dzah.android.R;
 import com.ch.wchhuangya.dzah.android.util.LogHelper;
-import com.ch.wchhuangya.dzah.android.util.logger.Log;
-import com.readystatesoftware.viewbadger.BadgeView;
 
 import java.util.ArrayList;
 import java.util.List;
