@@ -3,14 +3,8 @@ package com.ch.wchhuangya.dzah.android;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.ch.wchhuangya.dzah.android.activity.diycontrol.SimplestDrawerActivity;
-import com.ch.wchhuangya.dzah.android.activity.files.ExternalStorageActivity;
-import com.ch.wchhuangya.dzah.android.activity.files.InternalStorageActivity;
-import com.ch.wchhuangya.dzah.android.activity.popupwindow.WeiChatPWActivity;
-import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
-import com.ch.wchhuangya.dzah.android.activity.viewpager.WeiChatVPActivity;
+import com.ch.wchhuangya.dzah.android.activity.databinding.HelloWorldActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
-import com.ch.wchhuangya.dzah.android.service.ContactsService;
 
 /**
  * 主页
@@ -28,7 +22,7 @@ public class MainActivity extends BaseActivity {
         //if(SharedPreferencesHelper.getString(activity, Constant.SP_NAME_COMPONENTS, Constant.CPN_XPUSH_TOKEN) == null)
             XGPush.registerPush(activity, true);
 
-        Intent it = new Intent(activity, SimplestDrawerActivity.class);
+        Intent it = new Intent(activity, HelloWorldActivity.class);
 //        it.putExtra("msg", "hahahahhahahahahha");
 //        startService(it);
 
