@@ -11,6 +11,9 @@
             </intent-filter>
         </activity>
 
+        <!-- animation -->
+        <activity android:name=".activity.animation.RadiusChangedCircleActivity" android:screenOrientation="portrait" />
+
         <!-- apidemos start -->
 
         <!-- view -->
