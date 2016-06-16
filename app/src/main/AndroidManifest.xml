@@ -37,6 +37,9 @@
         <!-- sms -->
         <activity android:name=".activity.sms.SendIntentSmsActivity" android:screenOrientation="portrait" />
 
+        <!-- textandinput -->
+        <activity android:name=".activity.textandinput.ParseAndCopyActivity" android:screenOrientation="portrait" />
+
         <!-- provider -->
         <activity android:name=".activity.provider.SmsPVActivity" android:screenOrientation="portrait" />
 
