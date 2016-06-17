@@ -25,6 +25,9 @@
 
         <!-- apidemos end -->
 
+        <!-- canvas -->
+        <activity android:name=".activity.canvas.BasicGraphActivity" android:screenOrientation="portrait" />
+
         <!-- files -->
         <activity android:name=".activity.files.InternalStorageActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.files.ExternalStorageActivity" android:screenOrientation="portrait" />
