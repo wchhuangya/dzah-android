@@ -27,6 +27,8 @@
 
         <!-- canvas -->
         <activity android:name=".activity.canvas.BasicGraphActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.canvas.CalendarViewActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.canvas.TimelineViewActivity" android:screenOrientation="portrait" />
 
         <!-- files -->
         <activity android:name=".activity.files.InternalStorageActivity" android:screenOrientation="portrait" />

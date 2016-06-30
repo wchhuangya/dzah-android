@@ -3,7 +3,7 @@ package com.ch.wchhuangya.dzah.android;
 import android.content.Intent;
 import android.os.Bundle;
 
-import com.ch.wchhuangya.dzah.android.activity.canvas.BasicGraphActivity;
+import com.ch.wchhuangya.dzah.android.activity.canvas.CalendarViewActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
 
 /**
@@ -22,7 +22,7 @@ public class MainActivity extends BaseActivity {
         //if(SharedPreferencesHelper.getString(activity, Constant.SP_NAME_COMPONENTS, Constant.CPN_XPUSH_TOKEN) == null)
             XGPush.registerPush(activity, true);
 
-        Intent it = new Intent(activity, BasicGraphActivity.class);
+        Intent it = new Intent(activity, CalendarViewActivity.class);
 //        it.putExtra("msg", "hahahahhahahahahha");
 //        startService(it);
 

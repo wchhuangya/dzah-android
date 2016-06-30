@@ -11,4 +11,10 @@
     <color name="weichat_listview_divider">#232228</color>
     <color name="vp_selected">#0bbc0b</color>
 
+    <!-- canvas -->
+    <color name="canvas_week_title">#333333</color>
+    <color name="canvas_week_bg">#efefe4</color>
+    <color name="canvas_selected_bg">#38adff</color>
+    <color name="canvas_divide">#e3e3e5</color>
+
 </resources>
