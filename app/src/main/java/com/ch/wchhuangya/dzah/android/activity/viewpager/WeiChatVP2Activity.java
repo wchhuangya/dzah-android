@@ -94,7 +94,7 @@ public class WeiChatVP2Activity extends BaseActivity {
         // 设置第一个Tab的标签为选中状态
         mChatTv.setTextColor(getResources().getColor(R.color.vp_selected));
         // 给ViewPager添加页面改变的事件监听
-        mVpVp.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        mVpVp.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
                 LogHelper.d(WeiChatVP2Activity.class, position + "    " + positionOffset + "    " + positionOffsetPixels + "    " + mCurIntex);
