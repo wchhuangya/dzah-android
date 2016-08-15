@@ -4,7 +4,7 @@
         <import type="android.view.View" />
         <variable
             name="user"
-            type="com.ch.wchhuangya.dzah.android.domain.User"/>
+            type="com.ch.wchhuangya.dzah.android.model.User"/>
     </data>
     <LinearLayout
         android:layout_width="match_parent"

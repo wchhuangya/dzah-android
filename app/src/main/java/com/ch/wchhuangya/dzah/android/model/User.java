@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.dzah.android.domain;
+package com.ch.wchhuangya.dzah.android.model;
 
 import android.databinding.ObservableBoolean;
 import android.databinding.ObservableField;

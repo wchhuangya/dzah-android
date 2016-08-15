@@ -18,7 +18,7 @@ import android.widget.TextView;
 
 import com.ch.wchhuangya.dzah.android.BaseActivity;
 import com.ch.wchhuangya.dzah.android.R;
-import com.ch.wchhuangya.dzah.android.domain.Sms;
+import com.ch.wchhuangya.dzah.android.model.Sms;
 import com.ch.wchhuangya.dzah.android.util.LogHelper;
 import com.ch.wchhuangya.dzah.android.util.TimeHelper;
 

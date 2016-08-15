@@ -7,7 +7,7 @@ import android.os.IBinder;
 import android.support.annotation.Nullable;
 
 import com.ch.wchhuangya.dzah.android.activity.contentobserver.SmsCO;
-import com.ch.wchhuangya.dzah.android.domain.Sms;
+import com.ch.wchhuangya.dzah.android.model.Sms;
 
 /**
  * 短信服务

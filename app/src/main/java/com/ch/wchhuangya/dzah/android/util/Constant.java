@@ -16,6 +16,8 @@ public class Constant {
     public static final boolean DEFAULT_BOOL = false;
     /** 应用保存文件的目录 */
     public static final String DZAH_DIR = "/sysdzah";
+    /** Retrofit使用的基本URL地址 */
+    public static final String RTF_BASE_URL = "http://ip.taobao.com/"; // 淘宝反查IP地址 http://ip.taobao.com/service/getIpInfo.php?ip=[ip地址字串]
 
     // SharedPreference文件相关定义
     /** 组件相关的SharedPreference */

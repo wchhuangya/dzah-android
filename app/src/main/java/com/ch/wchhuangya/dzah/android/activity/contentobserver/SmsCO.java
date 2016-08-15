@@ -7,7 +7,7 @@ import android.database.Cursor;
 import android.net.Uri;
 import android.os.Handler;
 
-import com.ch.wchhuangya.dzah.android.domain.Sms;
+import com.ch.wchhuangya.dzah.android.model.Sms;
 import com.ch.wchhuangya.dzah.android.util.Constant;
 import com.ch.wchhuangya.dzah.android.util.LogHelper;
 import com.ch.wchhuangya.dzah.android.util.TimeHelper;

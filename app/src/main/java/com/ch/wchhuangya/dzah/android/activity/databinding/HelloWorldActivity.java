@@ -6,7 +6,7 @@ import android.os.Bundle;
 import com.ch.wchhuangya.dzah.android.BaseActivity;
 import com.ch.wchhuangya.dzah.android.R;
 import com.ch.wchhuangya.dzah.android.databinding.DbHelloWorldBinding;
-import com.ch.wchhuangya.dzah.android.domain.User;
+import com.ch.wchhuangya.dzah.android.model.User;
 
 /**
  * DataBinding学习

@@ -1,4 +1,4 @@
-package com.ch.wchhuangya.dzah.android.domain;
+package com.ch.wchhuangya.dzah.android.model;
 
 import java.io.Serializable;
 
@@ -6,7 +6,7 @@ import java.io.Serializable;
  * 短信实体
  * Created by wchya on 2016-01-07 19:50.
  */
-public class Sms implements Serializable, BaseDomain {
+public class Sms implements Serializable, BaseModel {
     /** 短信内容 */
     public static final String FIELD_BODY = "body";
     /** 发/收件人 */
