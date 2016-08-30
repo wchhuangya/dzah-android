@@ -34,6 +34,6 @@ public class SimplestDrawerActivity extends BaseActivity {
 
     @OnClick(R.id.first_menu_tv)
     public void showMsg(View view) {
-        showToast("第一个菜单", 1);
+        showToast("第一个菜单");
     }
 }

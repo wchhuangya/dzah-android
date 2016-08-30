@@ -182,7 +182,7 @@ public class SmsPVActivity extends BaseActivity {
                                         + "        【发送时间：" + dateSent + "】" + "|||" + mCursor.getString(mCursor.getColumnIndex(Sms.FIELD_ID)));
                             }
                             if (mCursor.getCount() == 0)
-                                showToast("没有任何数据!", 1);
+                                showToast("没有任何数据!");
                             else {
                                 mSmsCountTv.setVisibility(View.VISIBLE);
                                 mSmsCountTv.setText("总共  " + mCursor.getCount() + "  条短信");
@@ -206,7 +206,7 @@ public class SmsPVActivity extends BaseActivity {
                     showErrorMsg("读取短信失败!");
             } catch (Exception e) {
                 LogHelper.e(QueryAllAsync.class, e.getMessage());
-                showToast("读取短信失败：" + e.getMessage(), 1);
+                showToast("读取短信失败：" + e.getMessage());
             } finally {
                 cancelProgressDialog();
                 if (mCursor != null)
@@ -233,7 +233,7 @@ public class SmsPVActivity extends BaseActivity {
                 lockMsg(id);
                 break;
         }
-        showToast(id, 1);
+        showToast(id);
         return super.onContextItemSelected(item);
     }
 
@@ -247,7 +247,7 @@ public class SmsPVActivity extends BaseActivity {
         if (i > 0)
             new QueryAllAsync().execute("");
         else
-            showToast("删除失败!", 1);
+            showToast("删除失败!");
     }
 
     private void lockMsg(String id) {
@@ -257,7 +257,7 @@ public class SmsPVActivity extends BaseActivity {
         if (i > 0)
             new QueryAllAsync().execute("");
         else
-            showToast("锁定失败!", 1);
+            showToast("锁定失败!");
     }
 
     private void insertMsg() {
@@ -273,6 +273,6 @@ public class SmsPVActivity extends BaseActivity {
         if (null != u)
             new QueryAllAsync().execute("");
         else
-            showToast("插入失败!", 1);
+            showToast("插入失败!");
     }
 }

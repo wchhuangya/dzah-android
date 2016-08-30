@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="15dp">
+
+    <RadioGroup
+        android:id="@+id/measure_model_rg"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RadioButton
+            android:id="@+id/measure_model_exactly_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EXACTLY——精确尺寸模式"/>
+        <RadioButton
+            android:id="@+id/measure_model_match_parent_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="EXACTLY——match_parent 模式"/>
+        <RadioButton
+            android:id="@+id/measure_model_atmost_rb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="AT_MOST模式"/>
+    </RadioGroup>
+    <TextView
+        android:id="@+id/measure_model_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:layout_marginTop="10dp"
+        android:text="自定义 View 的测量模式一共有三种: EXACTLY, AT_MOST, UNSPECIFIED。一般来说,第三种——UNSPECIFIED模式很少使用。"
+        />
+    <Button
+        android:id="@+id/measure_model_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:textSize="16sp"
+        android:text="走一个"/>
+
+</LinearLayout>

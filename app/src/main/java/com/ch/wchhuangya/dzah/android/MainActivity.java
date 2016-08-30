@@ -1,11 +1,15 @@
 package com.ch.wchhuangya.dzah.android;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.CountDownTimer;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.ch.wchhuangya.dzah.android.activity.customview.MeasureModelActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
 
 import java.util.ArrayList;
@@ -35,6 +39,8 @@ public class MainActivity extends BaseActivity {
     public static final String TAG_CUSTOM_VIEW = "CUSTOM_VIEW";
     /** 记录访问历史的Stack */
     private Stack<List<Map<String, Object>>> mHistoryStack = new Stack<>();
+    /** 标识是否退出的变量 */
+    private boolean ifExit = false;
 
     /** 显示数据的ListView */
     private ListView mListView;
@@ -65,6 +71,7 @@ public class MainActivity extends BaseActivity {
         mHistoryStack.push(mDataList);
 
         // 初始化ListView
+        initListView();
     }
 
     /** 初始化ListView */
@@ -78,9 +85,13 @@ public class MainActivity extends BaseActivity {
                 Map<String, Object> map = mDataList.get(i);
 
                 if (((boolean)map.get(KEY_HAS_CHILD))) { // 如果有下级
-
-                } else {
-
+                    mDataList = mDataMap.get(map.get(KEY_TAG));
+                    mHistoryStack.push(mDataMap.get(map.get(KEY_TAG)));
+                    mAdapter = new SimpleAdapter(activity, mDataList, android.R.layout.simple_list_item_1, new String[]{KEY_TITLE}, new int[]{android.R.id.text1});
+                    mListView.setAdapter(mAdapter);
+                } else { // 如果没有下级,直接打开页面
+                    intent = new Intent(activity, (Class<?>) map.get(KEY_ACTIVITY));
+                    startActivity(intent);
                 }
             }
         });
@@ -101,8 +112,6 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_TAG, TAG_CUSTOM_VIEW);
         map.put(KEY_ACTIVITY, "");
         mDataList.add(map);
-
-        map = new HashMap<>();
     }
 
     /** 初始化一级以下的数据 */
@@ -118,9 +127,43 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_TITLE, "自定义View的测量");
         map.put(KEY_HAS_CHILD, false);
         map.put(KEY_TAG, "");
-        map.put(KEY_ACTIVITY, "");
+        map.put(KEY_ACTIVITY, MeasureModelActivity.class);
         list.add(map);
 
         mDataMap.put(TAG_CUSTOM_VIEW, list);
     }
+
+    @Override
+    public void onBackPressed() {
+        if (mHistoryStack.size() > 1) {
+            mHistoryStack.pop();
+            mDataList = mHistoryStack.peek();
+            mAdapter = new SimpleAdapter(activity, mDataList, android.R.layout.simple_list_item_1, new String[]{KEY_TITLE}, new int[]{android.R.id.text1});
+            mListView.setAdapter(mAdapter);
+        } else {
+            if (!ifExit) {
+                ifExit = true;
+                showToast("请在两秒内再次按下后退键", 0);
+                new Handler().postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        ifExit = false;
+                    }
+                }, 2000);
+            } else
+                super.onBackPressed();
+        }
+    }
+
+    private CountDownTimer mTimer = new CountDownTimer(1000, 1000) {
+        @Override
+        public void onTick(long l) {
+
+        }
+
+        @Override
+        public void onFinish() {
+
+        }
+    };
 }

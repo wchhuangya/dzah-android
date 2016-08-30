@@ -46,7 +46,7 @@ public class ExternalStorageActivity extends BaseActivity {
     public void getPublicPath(View view) {
         String type = getDirType(mPublicTypeSp.getSelectedItem().toString());
         if (type == null) {
-            showToast("无法获取公共根目录，请重新选择子目录!", 1);
+            showToast("无法获取公共根目录，请重新选择子目录!");
         } else {
             File file = Environment.getExternalStoragePublicDirectory(type);
             mPublicTv.setText(file.getAbsolutePath());

@@ -30,6 +30,12 @@
         <activity android:name=".activity.canvas.CalendarViewActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.canvas.TimelineViewActivity" android:screenOrientation="portrait" />
 
+        <!-- customview -->
+        <activity android:name=".activity.customview.MeasureModelActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.customview.MeasureModelExactlyExactlyActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.customview.MeasureModelExactlyMathparentActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.customview.MeasureModelAtmostActivity" android:screenOrientation="portrait" />
+
         <!-- files -->
         <activity android:name=".activity.files.InternalStorageActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.files.ExternalStorageActivity" android:screenOrientation="portrait" />

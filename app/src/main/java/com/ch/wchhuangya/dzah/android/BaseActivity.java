@@ -60,16 +60,23 @@ public class BaseActivity extends FragmentActivity {
     /**
      * 自定义的Toast显示
      * @param msg 要显示的信息
-     * @param lastTime 持续时间,0-短时间，1-长时间
+     * @param objects 持续时间,0-短时间，1-长时间,不填写,短时间
      */
-    protected void showToast(String msg, int lastTime){
+    protected void showToast(String msg, Object...objects){
         int resId = R.drawable.common_blue_btn_normal;
         View view = View.inflate(this, R.layout.common_toast, null);
         Toast toast = new Toast(this);
         toast.setView(view);
         view.findViewById(R.id.common_toast_ll).setBackgroundResource(resId);
         ((TextView)view.findViewById(R.id.common_toast_tv)).setText(msg);
-        toast.setDuration(lastTime == 0 ? Toast.LENGTH_SHORT : Toast.LENGTH_LONG);
+        int time = -1;
+        if (objects.length < 1)
+            time = Toast.LENGTH_LONG;
+        else {
+            int realTime = (int) objects[0];
+            time = realTime == 1 ? Toast.LENGTH_LONG : Toast.LENGTH_SHORT;
+        }
+        toast.setDuration(time);
         toast.show();
     }
 
@@ -135,8 +142,8 @@ public class BaseActivity extends FragmentActivity {
      */
     protected void showErrorMsg(String customMsg) {
         if (!TextUtils.isEmpty(msg))
-            showToast(msg, 1);
+            showToast(msg);
         else
-            showToast(customMsg, 1);
+            showToast(customMsg);
     }
 }
