@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.ch.wchhuangya.dzah.android.components.TextViewMultiBackgrounds
+        android:layout_width="180dp"
+        android:layout_height="80dp"
+        android:gravity="center"
+        android:text="学习学习再学习"
+        android:textColor="@android:color/black"
+        />
+
+</LinearLayout>

@@ -9,6 +9,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.ch.wchhuangya.dzah.android.activity.customview.MeasureModelActivity;
+import com.ch.wchhuangya.dzah.android.activity.customview.TextViewMultiBackgroundActivity;
+import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
 
 import java.util.ArrayList;
@@ -99,17 +101,21 @@ public class MainActivity extends BaseActivity {
     /** 初始化一级数据 */
     private void initDataList() {
 
-        initCustomViewDataList();
-    }
-
-    /** 初始化自定义视图数据 */
-    private void initCustomViewDataList() {
         Map<String, Object> map = new HashMap<>();
 
+        // 初始化自定义视图数据
         map.put(KEY_TITLE, "自定义View");
         map.put(KEY_HAS_CHILD, true);
         map.put(KEY_TAG, TAG_CUSTOM_VIEW);
         map.put(KEY_ACTIVITY, "");
+        mDataList.add(map);
+
+        // 初始化短信数据
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "短信");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, SmsPVActivity.class);
         mDataList.add(map);
     }
 
@@ -127,6 +133,13 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_HAS_CHILD, false);
         map.put(KEY_TAG, "");
         map.put(KEY_ACTIVITY, MeasureModelActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "自定义 TextView —— 双框");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, TextViewMultiBackgroundActivity.class);
         list.add(map);
 
         mDataMap.put(TAG_CUSTOM_VIEW, list);
