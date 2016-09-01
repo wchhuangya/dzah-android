@@ -2,7 +2,6 @@ package com.ch.wchhuangya.dzah.android;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.CountDownTimer;
 import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
@@ -154,16 +153,4 @@ public class MainActivity extends BaseActivity {
                 super.onBackPressed();
         }
     }
-
-    private CountDownTimer mTimer = new CountDownTimer(1000, 1000) {
-        @Override
-        public void onTick(long l) {
-
-        }
-
-        @Override
-        public void onFinish() {
-
-        }
-    };
 }
