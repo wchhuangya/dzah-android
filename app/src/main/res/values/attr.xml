@@ -5,4 +5,31 @@
     <declare-styleable name="DiyHorizontalScrollView"><!-- 抽屉效果第一个页面展示后与右边的间距 -->
         <attr name="rightMargin" />
     </declare-styleable>
+    
+    <declare-styleable name="TopBar">
+        <attr name="leftImageBackground" format="reference" />
+        <attr name="leftText" format="string" />
+        <attr name="leftTextColor" format="reference|color" />
+        <attr name="leftTextSize" format="dimension" />
+        <attr name="midText" format="string" />
+        <attr name="midTextColor" format="reference|color" />
+        <attr name="midTextSize" format="dimension" />
+        <attr name="hasRightImage" format="boolean" />
+        <attr name="hasRightText" format="boolean" />
+        <attr name="rightImageBackground" format="reference" />
+        <attr name="rightText" format="string" />
+        <attr name="rightTextColor" format="reference|color" />
+        <attr name="rightTextSize" format="dimension" />
+    </declare-styleable>
+    <!--<declare-styleable name="TopBar">
+        <attr name="titleB" format="string" />
+        <attr name="titleTextSize" format="dimension" />
+        <attr name="titleTextColor" format="color" />
+        <attr name="leftTextColor" format="color" />
+        <attr name="leftBackground" format="reference|color" />
+        <attr name="leftText" format="string" />
+        <attr name="rightTextColor" format="color" />
+        <attr name="rightBackground" format="reference|color" />
+        <attr name="rightText" format="string" />
+    </declare-styleable>-->
 </resources>

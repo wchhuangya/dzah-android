@@ -37,6 +37,7 @@
         <activity android:name=".activity.customview.MeasureModelAtmostActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.customview.TextViewMultiBackgroundActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.customview.TextViewFlickerActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.customview.TopBarActivity" android:screenOrientation="portrait" />
 
         <!-- files -->
         <activity android:name=".activity.files.InternalStorageActivity" android:screenOrientation="portrait" />

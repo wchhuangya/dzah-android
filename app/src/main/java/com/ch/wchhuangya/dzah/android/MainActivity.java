@@ -11,6 +11,7 @@ import android.widget.SimpleAdapter;
 import com.ch.wchhuangya.dzah.android.activity.customview.MeasureModelActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewFlickerActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewMultiBackgroundActivity;
+import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
 
@@ -148,6 +149,13 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_HAS_CHILD, false);
         map.put(KEY_TAG, "");
         map.put(KEY_ACTIVITY, TextViewFlickerActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "自定义 TextView —— 顶部工具栏");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, TopBarActivity.class);
         list.add(map);
 
         mDataMap.put(TAG_CUSTOM_VIEW, list);
