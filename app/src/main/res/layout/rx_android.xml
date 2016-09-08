@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/rx_android_bind_observer1_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="绑定观察者——方法一"/>
+    <Button
+        android:id="@+id/rx_android_bind_observer2_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="绑定观察者——方法二"/>
+    <Button
+        android:id="@+id/rx_android_output_array_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="输出数组  [8, 12, 31, 4, 3, 283]"/>
+    <Button
+        android:id="@+id/rx_android_output_square_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="计算数组  [8, 12, 31, 4, 3, 283]  中每个元素的平方数"/>
+    <Button
+        android:id="@+id/rx_android_operator_chain_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="操作符链式操作去掉前两个后输出偶数"/>
+    <TextView
+        android:id="@+id/rx_android_res_tv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="结果输出"
+        android:textColor="@android:color/black"
+        android:layout_marginTop="10dp"
+        android:gravity="center"/>
+
+</LinearLayout>

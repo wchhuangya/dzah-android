@@ -13,6 +13,7 @@ import com.ch.wchhuangya.dzah.android.activity.customview.TextViewFlickerActivit
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewMultiBackgroundActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
+import com.ch.wchhuangya.dzah.android.activity.rxandroid.RxAndroidActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
 
 import java.util.ArrayList;
@@ -41,6 +42,8 @@ public class MainActivity extends BaseActivity {
     /** 键值：子列表自定义视图的TAG值 */
     public static final String TAG_CUSTOM_VIEW = "CUSTOM_VIEW";
     /** 记录访问历史的Stack */
+    /** 键值：子列表RxAndroid的TAG值 */
+    public static final String TAG_RX_ANDROID = "RX_ANDROID";
     private Stack<List<Map<String, Object>>> mHistoryStack = new Stack<>();
     /** 标识是否退出的变量 */
     private boolean ifExit = false;
@@ -70,6 +73,7 @@ public class MainActivity extends BaseActivity {
         initDataList();
         // 初始化一级以下数据
         initDataMap();
+        initRxAndroidDataMap();
         // 记录访问历史的根
         mHistoryStack.push(mDataList);
 
@@ -119,6 +123,14 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_TAG, "");
         map.put(KEY_ACTIVITY, SmsPVActivity.class);
         mDataList.add(map);
+
+        // 初始化RxAndroid数据
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "RxAndroid");
+        map.put(KEY_HAS_CHILD, true);
+        map.put(KEY_TAG, TAG_RX_ANDROID);
+        map.put(KEY_ACTIVITY, "");
+        mDataList.add(map);
     }
 
     /** 初始化一级以下的数据 */
@@ -159,6 +171,19 @@ public class MainActivity extends BaseActivity {
         list.add(map);
 
         mDataMap.put(TAG_CUSTOM_VIEW, list);
+    }
+
+    private void initRxAndroidDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+
+        map.put(KEY_TITLE, "简单示例");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, RxAndroidActivity.class);
+        list.add(map);
+
+        mDataMap.put(TAG_RX_ANDROID, list);
     }
 
     @Override

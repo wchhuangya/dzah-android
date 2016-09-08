@@ -63,6 +63,9 @@
         <!-- retrofit -->
         <activity android:name=".activity.retrofit.getipins.RetrofitTestActivity" android:screenOrientation="portrait" />
 
+        <!-- rxandroid -->
+        <activity android:name=".activity.rxandroid.RxAndroidActivity" android:screenOrientation="portrait" />
+
         <!-- viewpager -->
         <activity android:name=".activity.viewpager.WeiChatVPActivity" android:screenOrientation="portrait" />
 
