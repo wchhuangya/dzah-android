@@ -32,4 +32,15 @@
         <attr name="rightBackground" format="reference|color" />
         <attr name="rightText" format="string" />
     </declare-styleable>-->
+
+    <declare-styleable name="ArcRatio"><!-- 圆弧比例图 -->
+        <attr name="arcWidth" format="dimension" />
+        <attr name="arcColor" format="reference|color" />
+        <attr name="arcRadian" format="float" />
+        <attr name="disBetweenArcAndCircle" format="dimension" />
+        <attr name="circleColor" format="reference|color" />
+        <attr name="titleColor" format="reference|color" />
+        <attr name="titleText" format="string" />
+        <attr name="titleSize" format="integer" />
+    </declare-styleable>
 </resources>

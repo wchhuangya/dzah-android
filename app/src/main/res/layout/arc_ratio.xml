@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:arcRatio="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:gravity="center"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <com.ch.wchhuangya.dzah.android.components.ArcRatio
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        arcRatio:arcColor="@color/vp_selected"
+        arcRatio:arcWidth="35dp"
+        arcRatio:arcRadian="85"
+        arcRatio:circleColor="@color/canvas_selected_bg"
+        arcRatio:disBetweenArcAndCircle="75dp"
+        arcRatio:titleText="整体进度比例"
+        arcRatio:titleColor="@android:color/white"
+        arcRatio:titleSize="32"
+        />
+
+</LinearLayout>

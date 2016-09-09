@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.ch.wchhuangya.dzah.android.activity.customview.ArcRatioActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.MeasureModelActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewFlickerActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewMultiBackgroundActivity;
@@ -168,6 +169,13 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_HAS_CHILD, false);
         map.put(KEY_TAG, "");
         map.put(KEY_ACTIVITY, TopBarActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "自定义 View —— 圆弧比例图");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, ArcRatioActivity.class);
         list.add(map);
 
         mDataMap.put(TAG_CUSTOM_VIEW, list);
