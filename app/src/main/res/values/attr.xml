@@ -43,4 +43,10 @@
         <attr name="titleText" format="string" />
         <attr name="titleSize" format="integer" />
     </declare-styleable>
+
+    <declare-styleable name="BgBorderTv"><!-- 有背景、有边框的 TextView -->
+        <attr name="borderWidth" format="dimension|reference" />
+        <attr name="borderColor" format="color|reference" />
+        <attr name="bgColor" format="color|reference" />
+    </declare-styleable>
 </resources>
