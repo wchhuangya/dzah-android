@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.ch.wchhuangya.dzah.android.activity.customview.ArcRatioActivity;
+import com.ch.wchhuangya.dzah.android.activity.customview.AudioBarChartActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.MeasureModelActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TestCustomViewActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewFlickerActivity;
@@ -177,6 +178,13 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_HAS_CHILD, false);
         map.put(KEY_TAG, "");
         map.put(KEY_ACTIVITY, ArcRatioActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "自定义 View —— 音频条状图");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, AudioBarChartActivity.class);
         list.add(map);
 
         map = new HashMap<>();

@@ -18,5 +18,7 @@
     <color name="canvas_divide">#e3e3e5</color>
     <color name="arc_ratio_red">#B30F1A</color>
     <color name="arc_ratio_green">#27AF12</color>
+    <color name="audio_bar_chart_red">#EE3D11</color>
+    <color name="audio_bar_chart_orange">#D5B32B</color>
 
 </resources>

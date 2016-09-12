@@ -40,6 +40,7 @@
         <activity android:name=".activity.customview.TopBarActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.customview.ArcRatioActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.customview.TestCustomViewActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.customview.AudioBarChartActivity" android:screenOrientation="portrait" />
 
         <!-- files -->
         <activity android:name=".activity.files.InternalStorageActivity" android:screenOrientation="portrait" />

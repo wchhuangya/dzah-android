@@ -49,4 +49,13 @@
         <attr name="borderColor" format="color|reference" />
         <attr name="bgColor" format="color|reference" />
     </declare-styleable>
+
+    <declare-styleable name="AudioBarChart">
+        <attr name="barWidth" format="reference|dimension" /><!-- 条的宽度,默认 3dp -->
+        <attr name="barStartColor" format="reference|color" /><!-- 条颜色的起始值,默认红色 -->
+        <attr name="barEndColor" format="reference|color" /><!-- 条颜色的结束值,默认橙色 -->
+        <attr name="barSpace" format="reference|dimension" /><!-- 条间距,默认 1dp -->
+        <attr name="wholeBgColor" format="reference|color" /><!-- 整个的背影颜色,默认白色 -->
+        <attr name="changeFrenquency" format="integer" /><!-- 条变化的频率,单位毫秒,默认 300 -->
+    </declare-styleable>
 </resources>
