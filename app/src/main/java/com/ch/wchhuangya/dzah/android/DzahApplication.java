@@ -19,6 +19,7 @@ public class DzahApplication extends Application {
     public void onCreate() {
         super.onCreate();
 
+        //Bmob.initialize(this, "1ec4aa2ceae3998de0982fe49ff6659e");
         XGPushConfig.enableDebug(this, Constant.DEBUG_SWITCH);
 
         Intent intent = new Intent(getApplicationContext(), SmsService.class);

@@ -18,6 +18,8 @@ import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.activity.rxandroid.RxAndroidActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
+import com.ch.wchhuangya.dzah.android.enums.BmobSDKError;
+import com.ch.wchhuangya.dzah.android.util.LogHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -61,11 +63,16 @@ public class MainActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
 
+        /*BmobUpdateAgent.initAppVersion(this);
+        BmobUpdateAgent.setUpdateOnlyWifi(false);
+        BmobUpdateAgent.update(this);*/
         activity = this;
         // 查看信鸽是否注册过，已经注册则什么都不干，没有注册则注册信鸽
         //if(SharedPreferencesHelper.getString(activity, Constant.SP_NAME_COMPONENTS, Constant.CPN_XPUSH_TOKEN) == null)
         XGPush.registerPush(activity, true);
 
+        BmobSDKError sdkError = BmobSDKError.ERROR_9001;
+        LogHelper.d(MainActivity.class, "enum name: " + sdkError.getText(9001));
         init();
     }
 

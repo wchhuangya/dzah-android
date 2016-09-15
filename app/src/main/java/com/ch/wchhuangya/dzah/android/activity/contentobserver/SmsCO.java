@@ -8,7 +8,6 @@ import android.net.Uri;
 import android.os.Handler;
 import android.telephony.SmsManager;
 
-import com.ch.wchhuangya.dzah.android.DzahApplication;
 import com.ch.wchhuangya.dzah.android.db.MessageDB;
 import com.ch.wchhuangya.dzah.android.model.Sms;
 import com.ch.wchhuangya.dzah.android.util.Constant;
@@ -46,8 +45,6 @@ public class SmsCO extends ContentObserver {
                 content = mCursor.getString(mCursor.getColumnIndex(Sms.FIELD_BODY));
                 time = TimeHelper.changeTimestampToTime(mCursor.getLong(mCursor.getColumnIndex(Sms.FIELD_DATE)), null);
                 timeSent = TimeHelper.changeTimestampToTime(mCursor.getLong(mCursor.getColumnIndex(Sms.FIELD_DATE_SENT)), null);
-                if (!content.equals(((DzahApplication)mContext.getApplicationContext()).preContent))
-                    ((DzahApplication)mContext.getApplicationContext()).preContent = mCursor.getString(mCursor.getColumnIndex(Sms.FIELD_BODY));
                 String type = Sms.typeToString(mCursor.getInt(mCursor.getColumnIndex(Sms.FIELD_TYPE)));
                 String date = type.equals("发件箱") || type.equals("已发送")
                         ? "【发送时间】" + time
@@ -64,7 +61,7 @@ public class SmsCO extends ContentObserver {
                         + date + dateSent + "】" + "|||" + mCursor.getString(mCursor.getColumnIndex(Sms.FIELD_ID));
                 LogHelper.e(SmsCO.class, s);
                 LogHelper.d(SmsCO.class, "收/发件人: " + address);
-                insertData(address, content, time, timeSent);
+                //insertData(address, content, time, timeSent);
                 Intent intent = new Intent();
                 intent.setAction(Constant.ACTION_HANDLE_SMS_RECEIVER);
                 intent.putExtra("content", s);

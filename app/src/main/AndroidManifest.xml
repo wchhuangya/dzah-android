@@ -1,7 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.ch.wchhuangya.dzah.android">
+          xmlns:tools="http://schemas.android.com/tools"
+          package="com.ch.wchhuangya.dzah.android">
 
-    <application android:allowBackup="false" android:label="@string/app_name" android:name=".DzahApplication"
+    <application android:allowBackup="false" android:label="@string/app_name" android:name=".DzahApplication" tools:replace="android:allowBackup"
         android:icon="@mipmap/ic_launcher" android:theme="@style/AppTheme">
 
         <activity android:name=".MainActivity" android:screenOrientation="portrait">
@@ -24,6 +25,9 @@
         <activity android:name=".activity.apidemos.views.TabHost2Activity" android:screenOrientation="portrait" />
 
         <!-- apidemos end -->
+
+        <!-- Bmob -->
+        <activity android:name="cn.bmob.v3.update.UpdateDialogActivity" android:theme="@android:style/Theme.Translucent.NoTitleBar" />
 
         <!-- canvas -->
         <activity android:name=".activity.canvas.BasicGraphActivity" android:screenOrientation="portrait" />
