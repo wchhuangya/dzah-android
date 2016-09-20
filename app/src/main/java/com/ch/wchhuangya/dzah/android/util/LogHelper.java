@@ -1,6 +1,5 @@
 package com.ch.wchhuangya.dzah.android.util;
 
-import android.app.Activity;
 import android.util.Log;
 
 /**
@@ -22,27 +21,27 @@ public class LogHelper {
      * 打印Info级别的日志
      * @param msg
      */
-    public static void i(Activity activity, String msg) {
+    public static void i(Class classs, String msg) {
         if(Constant.DEBUG_SWITCH)
-            Log.i(Constant.DZAH_TAG, activity.getClass().getSimpleName() + ": " + msg);
+            Log.i(Constant.DZAH_TAG, classs.getSimpleName() + ": " + msg);
     }
 
     /**
      * 打印Verbose级别的日志
      * @param msg
      */
-    public static void v(Activity activity, String msg) {
+    public static void v(Class classs, String msg) {
         if(Constant.DEBUG_SWITCH)
-            Log.v(Constant.DZAH_TAG, activity.getClass().getSimpleName() + ": " + msg);
+            Log.v(Constant.DZAH_TAG, classs.getSimpleName() + ": " + msg);
     }
 
     /**
      * 打印Error级别的日志
      * @param msg
      */
-    public static void w(Activity activity, String msg) {
+    public static void w(Class classs, String msg) {
         if(Constant.DEBUG_SWITCH)
-            Log.w(Constant.DZAH_TAG, activity.getClass().getSimpleName() + ": " + msg);
+            Log.w(Constant.DZAH_TAG, classs.getSimpleName() + ": " + msg);
     }
 
     /**
