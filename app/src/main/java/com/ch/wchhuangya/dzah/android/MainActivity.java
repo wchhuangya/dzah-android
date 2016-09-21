@@ -8,6 +8,7 @@ import android.widget.AdapterView;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.ch.wchhuangya.dzah.android.activity.contentprovider.CalendarProviderActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.ArcRatioActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.AudioBarChartActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.MeasureModelActivity;
@@ -46,9 +47,11 @@ public class MainActivity extends BaseActivity {
     public static final String KEY_TAG = "TAG";
     /** 键值：子列表自定义视图的TAG值 */
     public static final String TAG_CUSTOM_VIEW = "CUSTOM_VIEW";
-    /** 记录访问历史的Stack */
     /** 键值：子列表RxAndroid的TAG值 */
     public static final String TAG_RX_ANDROID = "RX_ANDROID";
+    /** 键值：子列表 ContentProvider 的TAG值 */
+    public static final String TAG_CONTENT_PROVIDER = "CONTENT_PROVIDER";
+    /** 记录访问历史的Stack */
     private Stack<List<Map<String, Object>>> mHistoryStack = new Stack<>();
     /** 标识是否退出的变量 */
     private boolean ifExit = false;
@@ -83,7 +86,6 @@ public class MainActivity extends BaseActivity {
         initDataList();
         // 初始化一级以下数据
         initDataMap();
-        initRxAndroidDataMap();
         // 记录访问历史的根
         mHistoryStack.push(mDataList);
 
@@ -141,11 +143,21 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_TAG, TAG_RX_ANDROID);
         map.put(KEY_ACTIVITY, "");
         mDataList.add(map);
+
+        // 初始化内容提供器数据
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "内容提供器");
+        map.put(KEY_HAS_CHILD, true);
+        map.put(KEY_TAG, TAG_CONTENT_PROVIDER);
+        map.put(KEY_ACTIVITY, "");
+        mDataList.add(map);
     }
 
     /** 初始化一级以下的数据 */
     private void initDataMap() {
         initCustomViewDataMap();
+        initRxAndroidDataMap();
+        initContentProviderDataMap();
     }
 
     /** 初始化自定义View二级数据 */
@@ -204,6 +216,7 @@ public class MainActivity extends BaseActivity {
         mDataMap.put(TAG_CUSTOM_VIEW, list);
     }
 
+    /** 初始化 RxAndroid 二级数据 */
     private void initRxAndroidDataMap() {
         List<Map<String, Object>> list = new ArrayList<>();
         Map<String, Object> map = new HashMap<>();
@@ -215,6 +228,20 @@ public class MainActivity extends BaseActivity {
         list.add(map);
 
         mDataMap.put(TAG_RX_ANDROID, list);
+    }
+
+    /** 初始化 ContentProvider 二级数据 */
+    private void initContentProviderDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+
+        map.put(KEY_TITLE, "日历内容提供器");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, CalendarProviderActivity.class);
+        list.add(map);
+
+        mDataMap.put(TAG_CONTENT_PROVIDER, list);
     }
 
     @Override
