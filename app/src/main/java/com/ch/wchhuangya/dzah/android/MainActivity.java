@@ -9,6 +9,8 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.CalendarProviderActivity;
+import com.ch.wchhuangya.dzah.android.activity.contentprovider.ContactsProviderActivity;
+import com.ch.wchhuangya.dzah.android.activity.contentprovider.ContactsSearchByNameActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.ArcRatioActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.AudioBarChartActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.MeasureModelActivity;
@@ -19,8 +21,6 @@ import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.activity.rxandroid.RxAndroidActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
-import com.ch.wchhuangya.dzah.android.enums.BmobSDKError;
-import com.ch.wchhuangya.dzah.android.util.LogHelper;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -51,6 +51,8 @@ public class MainActivity extends BaseActivity {
     public static final String TAG_RX_ANDROID = "RX_ANDROID";
     /** 键值：子列表 ContentProvider 的TAG值 */
     public static final String TAG_CONTENT_PROVIDER = "CONTENT_PROVIDER";
+    /** 键值：子列表 ContentProvider——Contacts Provider 的TAG值 */
+    public static final String TAG_CONTENT_PROVIDER_CONTACTS = "CONTENT_PROVIDER_CONTACTS";
     /** 记录访问历史的Stack */
     private Stack<List<Map<String, Object>>> mHistoryStack = new Stack<>();
     /** 标识是否退出的变量 */
@@ -74,8 +76,6 @@ public class MainActivity extends BaseActivity {
         //if(SharedPreferencesHelper.getString(activity, Constant.SP_NAME_COMPONENTS, Constant.CPN_XPUSH_TOKEN) == null)
         XGPush.registerPush(activity, true);
 
-        BmobSDKError sdkError = BmobSDKError.ERROR_9001;
-        LogHelper.d(MainActivity.class, "enum name: " + sdkError.getText(9001));
         init();
     }
 
@@ -158,6 +158,7 @@ public class MainActivity extends BaseActivity {
         initCustomViewDataMap();
         initRxAndroidDataMap();
         initContentProviderDataMap();
+        initContentProviderContactDataMap();
     }
 
     /** 初始化自定义View二级数据 */
@@ -241,8 +242,37 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_ACTIVITY, CalendarProviderActivity.class);
         list.add(map);
 
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "联系人内容提供器");
+        map.put(KEY_HAS_CHILD, true);
+        map.put(KEY_TAG, TAG_CONTENT_PROVIDER_CONTACTS);
+        map.put(KEY_ACTIVITY, "");
+        list.add(map);
+
         mDataMap.put(TAG_CONTENT_PROVIDER, list);
     }
+
+    /** 初始化 Contacts Provider 三级数据 */
+    private void initContentProviderContactDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+
+        map.put(KEY_TITLE, "初试");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, ContactsProviderActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "查询联系人");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, ContactsSearchByNameActivity.class);
+        list.add(map);
+
+        mDataMap.put(TAG_CONTENT_PROVIDER_CONTACTS, list);
+    }
+
 
     @Override
     public void onBackPressed() {
@@ -254,7 +284,7 @@ public class MainActivity extends BaseActivity {
         } else {
             if (!ifExit) {
                 ifExit = true;
-                showToast("请在两秒内再次按下后退键", 0);
+                showToast("请再次按键后退出", 0);
                 new Handler().postDelayed(new Runnable() {
                     @Override
                     public void run() {

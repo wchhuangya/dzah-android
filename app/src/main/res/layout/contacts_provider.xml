@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/contacts_provider_deleted_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取删除的联系人"/>
+
+        <Button
+            android:id="@+id/contacts_provider_double_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取原始联系人"/>
+        <Button
+            android:id="@+id/contacts_provider_del_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="删除原始数据"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/contacts_provider_loader_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Loader加载联系人"/>
+        <Button
+            android:id="@+id/contacts_provider_calls_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="获取通话记录"/>
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/contacts_provider_res_tv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:textSize="18sp"
+        android:visibility="gone"
+        android:textColor="#555"/>
+
+    <ListView
+        android:id="@+id/contacts_provider_listview"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

@@ -60,7 +60,7 @@ public class BaseActivity extends FragmentActivity {
     /**
      * 自定义的Toast显示
      * @param msg 要显示的信息
-     * @param objects 持续时间,0-短时间，1-长时间,不填写,短时间
+     * @param objects 持续时间,0-短时间，1-长时间,不填写,长时间
      */
     protected void showToast(String msg, Object...objects){
         int resId = R.drawable.common_blue_btn_normal;
