@@ -58,7 +58,9 @@
         </activity>
 
         <!-- sms -->
-        <activity android:name=".activity.sms.SendIntentSmsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.sms.SendIntentSendToSmsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.sms.SendIntentViewSmsActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.sms.SendSmsWithBroadcastBySmsManagerActivity" android:screenOrientation="portrait" />
 
         <!-- textandinput -->
         <activity android:name=".activity.textandinput.ParseAndCopyActivity" android:screenOrientation="portrait" />

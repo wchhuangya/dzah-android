@@ -22,7 +22,7 @@ import com.umeng.analytics.MobclickAgent;
  */
 public class BaseActivity extends FragmentActivity {
     /** 当前的Activity */
-    protected Activity activity;
+    protected Activity activity = this;
     /** 公用的Intent对象，在使用前请初始化 */
     protected Intent intent;
     /** 等待动画 */

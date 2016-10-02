@@ -1,6 +1,8 @@
 package com.ch.wchhuangya.dzah.android.activity.provider;
 
+import android.app.LoaderManager;
 import android.content.ContentValues;
+import android.content.Loader;
 import android.database.Cursor;
 import android.net.Uri;
 import android.os.AsyncTask;
@@ -32,7 +34,7 @@ import butterknife.OnClick;
  * 短信内容提供器操作
  * Created by wchya on 2016-01-04 20:40.
  */
-public class SmsPVActivity extends BaseActivity {
+public class SmsPVActivity extends BaseActivity implements LoaderManager.LoaderCallbacks<Cursor> {
 
     @Bind(R.id.show_btn)
     Button mShowBtn;
@@ -54,6 +56,22 @@ public class SmsPVActivity extends BaseActivity {
     private String[] selectionArgs = null;
     final ArrayList<String> list = new ArrayList<>();
     private String uri;
+
+    @Override
+    public Loader<Cursor> onCreateLoader(int id, Bundle args) {
+        return null;
+    }
+
+    @Override
+    public void onLoadFinished(Loader<Cursor> loader, Cursor data) {
+
+    }
+
+    @Override
+    public void onLoaderReset(Loader<Cursor> loader) {
+
+    }
+
     /**
      * 短信类型枚举
      */
@@ -117,7 +135,7 @@ public class SmsPVActivity extends BaseActivity {
     }
 
     private void init() {
-
+        getLoaderManager().initLoader(0, null, this);
     }
 
     @OnClick(R.id.show_btn)

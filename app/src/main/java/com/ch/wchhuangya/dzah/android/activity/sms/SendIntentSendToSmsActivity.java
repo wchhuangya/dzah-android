@@ -16,10 +16,10 @@ import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
- * 发送短信
+ * 使用 ACTION_SENDTO 动作发送 Intent 短信
  * Created by wchya on 2016-01-03 20:31.
  */
-public class SendIntentSmsActivity extends BaseActivity {
+public class SendIntentSendToSmsActivity extends BaseActivity {
 
     @Bind(R.id.sms_number_et)
     EditText mSmsNumberEt;

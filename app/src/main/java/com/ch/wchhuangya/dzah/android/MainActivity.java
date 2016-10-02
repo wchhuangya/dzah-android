@@ -20,6 +20,9 @@ import com.ch.wchhuangya.dzah.android.activity.customview.TextViewMultiBackgroun
 import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.activity.rxandroid.RxAndroidActivity;
+import com.ch.wchhuangya.dzah.android.activity.sms.SendIntentSendToSmsActivity;
+import com.ch.wchhuangya.dzah.android.activity.sms.SendIntentViewSmsActivity;
+import com.ch.wchhuangya.dzah.android.activity.sms.SendSmsWithBroadcastBySmsManagerActivity;
 import com.ch.wchhuangya.dzah.android.components.XGPush;
 
 import java.util.ArrayList;
@@ -53,6 +56,8 @@ public class MainActivity extends BaseActivity {
     public static final String TAG_CONTENT_PROVIDER = "CONTENT_PROVIDER";
     /** 键值：子列表 ContentProvider——Contacts Provider 的TAG值 */
     public static final String TAG_CONTENT_PROVIDER_CONTACTS = "CONTENT_PROVIDER_CONTACTS";
+    /** 键值：子列表 SMS 的TAG值 */
+    public static final String TAG_SMS = "TAG_SMS";
     /** 记录访问历史的Stack */
     private Stack<List<Map<String, Object>>> mHistoryStack = new Stack<>();
     /** 标识是否退出的变量 */
@@ -151,6 +156,14 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_TAG, TAG_CONTENT_PROVIDER);
         map.put(KEY_ACTIVITY, "");
         mDataList.add(map);
+
+        // 初始化内容提供器数据
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "短信");
+        map.put(KEY_HAS_CHILD, true);
+        map.put(KEY_TAG, TAG_SMS);
+        map.put(KEY_ACTIVITY, "");
+        mDataList.add(map);
     }
 
     /** 初始化一级以下的数据 */
@@ -159,6 +172,7 @@ public class MainActivity extends BaseActivity {
         initRxAndroidDataMap();
         initContentProviderDataMap();
         initContentProviderContactDataMap();
+        initSMSDataMap();
     }
 
     /** 初始化自定义View二级数据 */
@@ -273,6 +287,33 @@ public class MainActivity extends BaseActivity {
         mDataMap.put(TAG_CONTENT_PROVIDER_CONTACTS, list);
     }
 
+    /** 初始化 SMS 二级数据 */
+    private void initSMSDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+
+        map.put(KEY_TITLE, "使用 ACTION_SENDTO 发送短信");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, SendIntentSendToSmsActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "使用 ACTION_VIEW 发送短信");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, SendIntentViewSmsActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "使用 SmsManager 发送短信发广播");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, SendSmsWithBroadcastBySmsManagerActivity.class);
+        list.add(map);
+
+        mDataMap.put(TAG_SMS, list);
+    }
 
     @Override
     public void onBackPressed() {
