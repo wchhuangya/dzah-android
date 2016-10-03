@@ -20,6 +20,7 @@ import com.ch.wchhuangya.dzah.android.activity.customview.TextViewMultiBackgroun
 import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.activity.rxandroid.RxAndroidActivity;
+import com.ch.wchhuangya.dzah.android.activity.rxandroid.ShowPhoneDBListActivity;
 import com.ch.wchhuangya.dzah.android.activity.sms.SendIntentSendToSmsActivity;
 import com.ch.wchhuangya.dzah.android.activity.sms.SendIntentViewSmsActivity;
 import com.ch.wchhuangya.dzah.android.activity.sms.SendSmsWithBroadcastBySmsManagerActivity;
@@ -111,12 +112,24 @@ public class MainActivity extends BaseActivity {
                 if (((boolean)map.get(KEY_HAS_CHILD))) { // 如果有下级
                     mDataList = mDataMap.get(map.get(KEY_TAG));
                     mHistoryStack.push(mDataMap.get(map.get(KEY_TAG)));
-                    mAdapter = new SimpleAdapter(activity, mDataList, android.R.layout.simple_list_item_1, new String[]{KEY_TITLE}, new int[]{android.R.id.text1});
+                    mAdapter = new SimpleAdapter(activity, mDataList, android.R.layout.simple_list_item_1, new String[]{KEY_TITLE},
+                            new int[]{android.R.id.text1});
                     mListView.setAdapter(mAdapter);
                 } else { // 如果没有下级,直接打开页面
                     intent = new Intent(activity, (Class<?>) map.get(KEY_ACTIVITY));
                     startActivity(intent);
                 }
+            }
+        });
+        mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
+                Map<String, Object> map = mDataList.get(position);
+                if (map.get(KEY_ACTIVITY) == RxAndroidActivity.class) {
+                    intent = new Intent(activity, ShowPhoneDBListActivity.class);
+                    startActivity(intent);
+                }
+                return false;
             }
         });
     }

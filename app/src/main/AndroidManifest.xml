@@ -76,6 +76,7 @@
 
         <!-- rxandroid -->
         <activity android:name=".activity.rxandroid.RxAndroidActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.rxandroid.ShowPhoneDBListActivity" android:screenOrientation="portrait" />
 
         <!-- viewpager -->
         <activity android:name=".activity.viewpager.WeiChatVPActivity" android:screenOrientation="portrait" />

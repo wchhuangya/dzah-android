@@ -15,7 +15,7 @@ public class PhoneDB extends SQLiteOpenHelper {
     /** 数据库名称 */
     public static final String DB_NAME = "phone.db";
     /** 数据库版本 */
-    private static final int DB_VERSION = 1;
+    private static final int DB_VERSION = 2;
     /** 电话数据库实例 */
     private static PhoneDB mInstance;
     /** 呼叫记录表 */
@@ -35,6 +35,9 @@ public class PhoneDB extends SQLiteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO 数据库升级时的操作
+        // 第一次升级数据库,修改数据库字段 PHONE_NUMBER, 取消 NOT NULL
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALLS_RECORD_NAME);
+        onCreate(db);
     }
 
     /** 电话数据库单例获取 */
@@ -96,10 +99,10 @@ public class PhoneDB extends SQLiteOpenHelper {
      * @param dateTimeMsec 时间,格式 毫秒
      * @param type 类型,取值范围及值参见 PhoneType 类
      */
-    public void insertRecord(String phoneNumber, String dateTime, int dateTimeMsec, int type) {
+    public void insertRecord(String phoneNumber, String dateTime, long dateTimeMsec, String type) {
         String sql = "insert into " + TABLE_CALLS_RECORD_NAME + "(" + CallsRecord.PHONE_NUMBER + ", " + CallsRecord.DATE_TIME
                         + ", " + CallsRecord.DATE_TIME_MSEC + ", " + CallsRecord.TYPE + ") values('" + phoneNumber
-                        + "', '" + dateTime + "', '" + dateTimeMsec + "', " + type + ")";
+                        + "', '" + dateTime + "', '" + dateTimeMsec + "', '" + type + "')";
         mDb.execSQL(sql);
     }
 
@@ -108,12 +111,22 @@ public class PhoneDB extends SQLiteOpenHelper {
      * @param phoneNumber 拨打/接听的电话号码(可能为空)
      * @param dateTimeMsec 动作发生的时间戳
      * @param type 动作类型
-     * @return
      */
-    public boolean needSave(String phoneNumber, String dateTimeMsec, int type) {
+    public boolean needSave(String phoneNumber, long dateTimeMsec, String type) {
         String sql = "select " + CallsRecord._ID + " from " + TABLE_CALLS_RECORD_NAME
-                + " where " + CallsRecord.DATE_TIME_MSEC + " - " + dateTimeMsec + " < 2 and " + CallsRecord.TYPE + " = " + type;
+                + " where " + CallsRecord.DATE_TIME_MSEC + " - " + dateTimeMsec + " < 2 and " + CallsRecord.TYPE + " = '" + type
+                + "' and " + CallsRecord.PHONE_NUMBER + " = '" + phoneNumber + "'";
         Cursor cursor = mDb.rawQuery(sql, null);
         return cursor.getCount() == 0;
+    }
+
+    /**
+     * 查找所有的记录
+     * @param column 要排序的列名
+     * @param order 排序的规则
+     */
+    public Cursor findAll(String column, String order) {
+        String sql = "select * from " + TABLE_CALLS_RECORD_NAME + " order by " + column + " " + order;
+        return mDb.rawQuery(sql, null);
     }
 }
