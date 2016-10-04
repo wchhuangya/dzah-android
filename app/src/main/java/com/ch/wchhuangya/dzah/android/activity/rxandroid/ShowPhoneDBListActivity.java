@@ -7,6 +7,8 @@ import android.content.Loader;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.view.View;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.SimpleCursorAdapter;
 import android.widget.TextView;
@@ -19,6 +21,7 @@ import com.ch.wchhuangya.dzah.android.util.LogHelper;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 /**
  * 显示电话数据库记录的列表
@@ -31,10 +34,16 @@ public class ShowPhoneDBListActivity extends BaseActivity implements LoaderManag
     ListView mList;
     @Bind(R.id.common_listview_tv)
     TextView mCommonListviewTv;
+    @Bind(R.id.common_listview_search_et)
+    EditText mCommonListviewSearchEt;
     /**
      * 适配器
      */
     private SimpleCursorAdapter mAdapter;
+    /**
+     * 用于搜索的电话号码
+     */
+    private static String search = "";
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,11 +53,17 @@ public class ShowPhoneDBListActivity extends BaseActivity implements LoaderManag
 
         getLoaderManager().initLoader(0, null, this);
         mAdapter = new SimpleCursorAdapter(activity, R.layout.phone_db_list_item, null,
-                new String[]{PhoneDB.CallsRecord.PHONE_NUMBER, PhoneDB.CallsRecord.DATE_TIME, PhoneDB.CallsRecord.TYPE},
-                new int[]{R.id.phone_db_list_item_number_tv, R.id.phone_db_list_item_date_tv, R.id.phone_db_list_item_type_tv}, 0);
+                new String[]{PhoneDB.CallsRecord.PHONE_NUMBER, PhoneDB.CallsRecord.DATE_TIME, PhoneDB.CallsRecord.TYPE, PhoneDB.CallsRecord.PHONE_MODEL},
+                new int[]{R.id.phone_db_list_item_number_tv, R.id.phone_db_list_item_date_tv, R.id.phone_db_list_item_type_tv, R.id.phone_db_list_item_model_tv}, 0);
         mList.setAdapter(mAdapter);
         mList.setEmptyView(mCommonListviewTv);
         mCommonListviewTv.setText("暂无数据");
+    }
+
+    @OnClick(R.id.common_listview_search_tv)
+    public void search(View view) {
+        search = mCommonListviewSearchEt.getText().toString().trim();
+        getLoaderManager().restartLoader(0, null, ShowPhoneDBListActivity.this);
     }
 
     @Override
@@ -83,7 +98,7 @@ public class ShowPhoneDBListActivity extends BaseActivity implements LoaderManag
         @Override
         public Cursor loadInBackground() {
             LogHelper.i(ShowPhoneDBListActivity.class, "loadInBackground...");
-            Cursor cursor = PhoneDB.getInstance(mContext).findAll(PhoneDB.CallsRecord.DATE_TIME, DBEnum.getOrder(DBEnum.DB_SORT_DESC));
+            Cursor cursor = PhoneDB.getInstance(mContext).findAllByKeyword(search, DBEnum.getOrder(DBEnum.DB_SORT_DESC));
             return cursor;
         }
     }

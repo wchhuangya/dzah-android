@@ -3,6 +3,7 @@ package com.ch.wchhuangya.dzah.android.receiver;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 
@@ -41,20 +42,23 @@ public class PhoneReceiver extends BroadcastReceiver {
         @Override
         public void onCallStateChanged(int state, String incomingNumber) { // 呼叫状态改变时执行
             LogHelper.i(PhoneReceiver.class, "电话号码: " + incomingNumber);
+            String phoneType = PhoneDB.PhoneType.getDescrie(PhoneDB.PhoneType.TYPE_IDEL);
             switch (state) {
                 case TelephonyManager.CALL_STATE_IDLE: // 呼叫状态：空闲
                     LogHelper.i(PhoneReceiver.class, "CALL_STATE_IDLE " + TimeHelper.getCurrentTime(null));
+                    phoneType = PhoneDB.PhoneType.getDescrie(PhoneDB.PhoneType.TYPE_IDEL);
                     break;
                 case TelephonyManager.CALL_STATE_RINGING: // 呼叫状态：响铃。新的呼叫到达，正在响铃或等待。在等待的状态下，设备上一定已经存在了呼叫
                     LogHelper.i(PhoneReceiver.class, "CALL_STATE_RINGING " + TimeHelper.getCurrentTime(null));
+                    phoneType = PhoneDB.PhoneType.getDescrie(PhoneDB.PhoneType.TYPE_RINGING);
                     break;
                 case TelephonyManager.CALL_STATE_OFFHOOK: // 呼叫状态: 至少存在一个呼叫, 该呼叫要么正在拨出, 要么持机等待, 要么没有呼叫在响铃或等待
                     LogHelper.i(PhoneReceiver.class, "CALL_STATE_OFFHOOK " + TimeHelper.getCurrentTime(null));
+                    phoneType = PhoneDB.PhoneType.getDescrie(PhoneDB.PhoneType.TYPE_OFFHOOK);
                     break;
             }
 
-            new DBThread(mContext, incomingNumber, TimeHelper.getCurrentTime(null), new Date().getTime(),
-                    PhoneDB.PhoneType.getDescrie(PhoneDB.PhoneType.TYPE_IDEL)).start();
+            new DBThread(mContext, incomingNumber, TimeHelper.getCurrentTime(null), new Date().getTime(), phoneType).start();
 
             super.onCallStateChanged(state, incomingNumber);
         }
@@ -80,8 +84,10 @@ public class PhoneReceiver extends BroadcastReceiver {
         public void run() {
             mPhoneDB = PhoneDB.getInstance(context);
 
+            // mPhoneDB.insertRecord(phoneNumber, dataTime, dateTimeMsec, type);
             if (mPhoneDB.needSave(phoneNumber, dateTimeMsec, type)) { // 需要保存
-                mPhoneDB.insertRecord(phoneNumber, dataTime, dateTimeMsec, type);
+                mPhoneDB.insertRecord(phoneNumber, dataTime, dateTimeMsec, type,
+                        ((TelephonyManager)mContext.getSystemService(Context.TELEPHONY_SERVICE)).getDeviceId(), Build.MODEL);
             } else {
                 LogHelper.i(PhoneReceiver.class, phoneNumber + "的呼叫号码不需要保存!");
             }

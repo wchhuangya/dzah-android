@@ -128,6 +128,7 @@ public class MainActivity extends BaseActivity {
                 if (map.get(KEY_ACTIVITY) == RxAndroidActivity.class) {
                     intent = new Intent(activity, ShowPhoneDBListActivity.class);
                     startActivity(intent);
+                    return true;
                 }
                 return false;
             }

@@ -15,7 +15,7 @@ public class PhoneDB extends SQLiteOpenHelper {
     /** 数据库名称 */
     public static final String DB_NAME = "phone.db";
     /** 数据库版本 */
-    private static final int DB_VERSION = 2;
+    private static final int DB_VERSION = 3;
     /** 电话数据库实例 */
     private static PhoneDB mInstance;
     /** 呼叫记录表 */
@@ -36,6 +36,7 @@ public class PhoneDB extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         // TODO 数据库升级时的操作
         // 第一次升级数据库,修改数据库字段 PHONE_NUMBER, 取消 NOT NULL
+        // 第二次升级数据库,添加字段: PHONE_IMEI
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALLS_RECORD_NAME);
         onCreate(db);
     }
@@ -62,11 +63,16 @@ public class PhoneDB extends SQLiteOpenHelper {
         public static final String DATE_TIME_MSEC = "DATE_TIME_MSEC";
         /** 动作类型,具体分类值请参见 PhoneDB.PhoneType 实体 */
         public static final String TYPE = "TYPE";
+        /** 手机的唯一标识 */
+        public static final String PHONE_IMEI = "PHONE_IMEI";
+        /** 手机型号 */
+        public static final String PHONE_MODEL = "PHONE_MODEL";
 
         /** 创建表的 SQL 语句 */
         private static final String CREATE_TAB_SQL = "CREATE TABLE [" + PhoneDB.TABLE_CALLS_RECORD_NAME
                 + "] (" + _ID + " INTEGER NOT NULL PRIMARY KEY AUTOINCREMENT, " + PHONE_NUMBER
-                + " TEXT NOT NULL, " + DATE_TIME + " TEXT NOT NULL, " + DATE_TIME_MSEC + " INTEGER NOT NULL, " + TYPE + " INTEGER NOT NULL)";
+                + " TEXT NOT NULL, " + DATE_TIME + " TEXT NOT NULL, " + DATE_TIME_MSEC + " INTEGER NOT NULL, " + TYPE + " INTEGER NOT NULL, "
+                + PHONE_IMEI + " TEXT NOT NULL, " + PHONE_MODEL + " TEXT NOT NULL)";
     }
 
     public enum PhoneType {
@@ -99,10 +105,11 @@ public class PhoneDB extends SQLiteOpenHelper {
      * @param dateTimeMsec 时间,格式 毫秒
      * @param type 类型,取值范围及值参见 PhoneType 类
      */
-    public void insertRecord(String phoneNumber, String dateTime, long dateTimeMsec, String type) {
+    public void insertRecord(String phoneNumber, String dateTime, long dateTimeMsec, String type, String phoneIMEI, String phoneModel) {
         String sql = "insert into " + TABLE_CALLS_RECORD_NAME + "(" + CallsRecord.PHONE_NUMBER + ", " + CallsRecord.DATE_TIME
-                        + ", " + CallsRecord.DATE_TIME_MSEC + ", " + CallsRecord.TYPE + ") values('" + phoneNumber
-                        + "', '" + dateTime + "', '" + dateTimeMsec + "', '" + type + "')";
+                        + ", " + CallsRecord.DATE_TIME_MSEC + ", " + CallsRecord.TYPE + ", " + CallsRecord.PHONE_IMEI + ", " + CallsRecord.PHONE_MODEL
+                        + ") values('" + phoneNumber
+                        + "', '" + dateTime + "', '" + dateTimeMsec + "', '" + type + "', '" + phoneIMEI + "', '" + phoneModel + "')";
         mDb.execSQL(sql);
     }
 
@@ -127,6 +134,16 @@ public class PhoneDB extends SQLiteOpenHelper {
      */
     public Cursor findAll(String column, String order) {
         String sql = "select * from " + TABLE_CALLS_RECORD_NAME + " order by " + column + " " + order;
+        return mDb.rawQuery(sql, null);
+    }
+
+    /**
+     * 根据电话号码查找记录
+     * @param phoneNum 用于查找的电话号码
+     */
+    public Cursor findAllByKeyword(String phoneNum, String order) {
+        String sql = "select * from " + TABLE_CALLS_RECORD_NAME + " where " + CallsRecord.PHONE_NUMBER
+                + " like '%" + phoneNum + "%' order by " + CallsRecord.DATE_TIME + " " + order;
         return mDb.rawQuery(sql, null);
     }
 }
