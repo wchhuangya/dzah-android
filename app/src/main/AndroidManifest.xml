@@ -35,6 +35,7 @@
         <activity android:name=".activity.contentprovider.CalendarProviderActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.contentprovider.ContactsProviderActivity" android:screenOrientation="portrait" />
         <activity android:name=".activity.contentprovider.ContactsSearchByNameActivity" android:screenOrientation="portrait" />
+        <activity android:name=".activity.contentprovider.CallsProviderActivity" android:screenOrientation="portrait" />
 
         <!-- customview -->
         <activity android:name=".activity.customview.MeasureModelActivity" android:screenOrientation="portrait" />
@@ -98,6 +99,14 @@
             </intent-filter>
         </receiver>
 
+        <receiver android:name=".receiver.PhoneReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.PHONE_STATE" />
+                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
+            </intent-filter>
+        </receiver>
+
+        <!-- ../service -->
         <!-- 不想接电话,发短信说明的服务 -->
         <service android:name=".service.RespondViaMessageService" android:permission="android.permission.SEND_RESPOND_VIA_MESSAGE" android:exported="true">
             <intent-filter>
@@ -109,13 +118,7 @@
                 <data android:scheme="mmsto" />
             </intent-filter>
         </service>
-
-        <receiver android:name=".receiver.PhoneReceiver" android:exported="true">
-            <intent-filter>
-                <action android:name="android.intent.action.PHONE_STATE" />
-                <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
-            </intent-filter>
-        </receiver>
+        <service android:name=".service.CallService" android:exported="true"></service>
 
         <!-- 信鸽开始 -->
         <!-- 【必须】 信鸽receiver广播接收 -->

@@ -40,7 +40,9 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:gravity="center"
+            android:text="没有匹配的结果"
             android:textColor="@android:color/black"
+            android:paddingBottom="50dp"
             android:textSize="20sp"/>
     </LinearLayout>
 </LinearLayout>

@@ -40,7 +40,7 @@ public class TimeHelper {
             sdf = new SimpleDateFormat(DEFAULT_LONG_FORMAT);
         else
             sdf = new SimpleDateFormat(format);
-        return sdf.format(new Date(timestamp));
+        return sdf.format(new Date(timestamp > 999999999999L ? timestamp : timestamp * 1000));
     }
 
     /**
@@ -49,5 +49,18 @@ public class TimeHelper {
      */
     public static long getCurrentTimestamp() {
         return System.currentTimeMillis();
+    }
+
+    /**
+     * 根据秒数返回表示友好的字符串
+     * @param second 要格式化的秒数
+     */
+    public static String getFriendlyTime(int second) {
+        if (second < 60)
+            return second + "秒";
+        else if (second >= 60 && second < 3600)
+            return second / 60 + "分" + second % 60 + "秒";
+        else
+            return second / 3600 + "小时" + getFriendlyTime(second % 3600);
     }
 }

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:padding="15dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/calls_provider_item_date_tv"
+        style="@style/list_item_tv"
+        android:layout_marginTop="5dp"
+        />
+    <TextView
+        android:id="@+id/calls_provider_item_phone_tv"
+        android:layout_below="@id/calls_provider_item_date_tv"
+        style="@style/list_item_tv"/>
+    <TextView
+        android:id="@+id/calls_provider_item_type_tv"
+        style="@style/list_item_tv"
+        android:layout_below="@id/calls_provider_item_date_tv"
+        android:layout_alignParentRight="true"
+        />
+    <TextView
+        android:id="@+id/calls_provider_item_name_tv"
+        android:layout_below="@id/calls_provider_item_phone_tv"
+        android:layout_marginTop="5dp"
+        style="@style/list_item_tv"/>
+
+</RelativeLayout>

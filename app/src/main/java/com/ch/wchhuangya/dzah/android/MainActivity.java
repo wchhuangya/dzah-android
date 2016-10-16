@@ -9,6 +9,7 @@ import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.CalendarProviderActivity;
+import com.ch.wchhuangya.dzah.android.activity.contentprovider.CallsProviderActivity;
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.ContactsProviderActivity;
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.ContactsSearchByNameActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.ArcRatioActivity;
@@ -275,6 +276,13 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_HAS_CHILD, true);
         map.put(KEY_TAG, TAG_CONTENT_PROVIDER_CONTACTS);
         map.put(KEY_ACTIVITY, "");
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "通话记录内容提供器");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, CallsProviderActivity.class);
         list.add(map);
 
         mDataMap.put(TAG_CONTENT_PROVIDER, list);
