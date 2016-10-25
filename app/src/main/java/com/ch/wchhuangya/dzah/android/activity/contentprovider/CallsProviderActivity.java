@@ -19,6 +19,7 @@ import android.widget.TextView;
 
 import com.ch.wchhuangya.dzah.android.BaseActivity;
 import com.ch.wchhuangya.dzah.android.R;
+import com.ch.wchhuangya.dzah.android.util.StringHelper;
 import com.ch.wchhuangya.dzah.android.util.TimeHelper;
 
 import butterknife.Bind;
@@ -142,7 +143,7 @@ public class CallsProviderActivity extends BaseActivity implements LoaderManager
 
             holder.mDateTv.setText(TimeHelper.changeTimestampToTime(date, null));
             holder.mPhoneTv.setText(phone);
-            holder.mTypeTv.setText(getCallType(type, duration));
+            holder.mTypeTv.setText(StringHelper.getCallType(type, duration));
             holder.mNameTv.setText(name);
         }
 
@@ -152,28 +153,5 @@ public class CallsProviderActivity extends BaseActivity implements LoaderManager
             private TextView mTypeTv;
             private TextView mNameTv;
         }
-    }
-
-    /**
-     * type = 1，来电；type = 2，去电；type = 3，未接；
-     * type = 1 && duration = 0，骚扰
-     * type = 2 && duration = 0，挂断
-     */
-    private String getCallType(int type, int duration) {
-        switch (type) {
-            case CallLog.Calls.INCOMING_TYPE:
-                if (duration == 0)
-                    return "未接";
-                else
-                    return "呼入" + TimeHelper.getFriendlyTime(duration);
-            case CallLog.Calls.OUTGOING_TYPE:
-                if (duration == 0)
-                    return "呼出";
-                else
-                    return "呼出" + TimeHelper.getFriendlyTime(duration);
-            case CallLog.Calls.MISSED_TYPE:
-                return "未接";
-        }
-        return "未知";
     }
 }

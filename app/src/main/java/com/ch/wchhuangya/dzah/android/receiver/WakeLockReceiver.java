@@ -4,6 +4,7 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 
+import com.ch.wchhuangya.dzah.android.service.CallsService;
 import com.ch.wchhuangya.dzah.android.service.SmsService;
 import com.ch.wchhuangya.dzah.android.util.ActivityHelper;
 
@@ -17,6 +18,10 @@ public class WakeLockReceiver extends BroadcastReceiver {
         if (intent.getAction().equals(Intent.ACTION_SCREEN_ON)) {
             if (!ActivityHelper.isServiceRunning(context, SmsService.class.getName())) {
                 Intent i = new Intent(context, SmsService.class);
+                context.startService(i);
+            }
+            if (!ActivityHelper.isServiceRunning(context, CallsService.class.getName())) {
+                Intent i = new Intent(context, CallsService.class);
                 context.startService(i);
             }
         }

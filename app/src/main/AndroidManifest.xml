@@ -99,12 +99,12 @@
             </intent-filter>
         </receiver>
 
-        <receiver android:name=".receiver.PhoneReceiver" android:exported="true">
+        <!--<receiver android:name=".receiver.PhoneReceiver" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.PHONE_STATE" />
                 <action android:name="android.intent.action.NEW_OUTGOING_CALL" />
             </intent-filter>
-        </receiver>
+        </receiver>-->
 
         <!-- ../service -->
         <!-- 不想接电话,发短信说明的服务 -->
@@ -118,7 +118,7 @@
                 <data android:scheme="mmsto" />
             </intent-filter>
         </service>
-        <service android:name=".service.CallService" android:exported="true"></service>
+        <service android:name=".service.CallsService" />
 
         <!-- 信鸽开始 -->
         <!-- 【必须】 信鸽receiver广播接收 -->
@@ -201,12 +201,16 @@
     <uses-permission android:name="android.permission.READ_PHONE_STATE" /><!-- 访问电话状态(只读),包括设备的电话号码,当前移动电话网络信息,任何进行的电话状态, -->
     <uses-permission android:name="android.permission.CALL_PHONE" /><!-- 拨打电话权限。不经过拨号盘让用户确认,直接拨打电话 -->
     <uses-permission android:name="android.permission.PROCESS_OUTGOING_CALLS" /><!-- 监听手机去电 -->
+    <!-- 日历读写权限 -->
+    <uses-permission android:name="android.permission.READ_CALENDAR" />
+    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
+    <!-- 手机 -->
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" /><!-- 接收开机广播权限 -->
 
     <!-- 【必须】 信鸽SDK所需权限 -->
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
     <uses-permission android:name="android.permission.RESTART_PACKAGES" />
     <uses-permission android:name="android.permission.BROADCAST_STICKY" />
     <uses-permission android:name="android.permission.WRITE_SETTINGS" />
@@ -219,9 +223,5 @@
     <!-- 【可选】 信鸽SDK所需权限 -->
     <uses-permission android:name="android.permission.BLUETOOTH" />
     <uses-permission android:name="android.permission.BATTERY_STATS" />
-
-    <!-- 日历读写权限 -->
-    <uses-permission android:name="android.permission.READ_CALENDAR" />
-    <uses-permission android:name="android.permission.WRITE_CALENDAR" />
 
 </manifest>
