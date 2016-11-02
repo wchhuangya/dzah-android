@@ -18,6 +18,8 @@ public class Constant {
     public static final String DZAH_DIR = "/sysdzah";
     /** Retrofit使用的基本URL地址 */
     public static final String RTF_BASE_URL = "http://ip.taobao.com/"; // 淘宝反查IP地址 http://ip.taobao.com/service/getIpInfo.php?ip=[ip地址字串]
+    /** 文本中的换行符 */
+    public static final String NEW_LINE = "\n";
 
     // SharedPreference文件相关定义
     /** 组件相关的SharedPreference */

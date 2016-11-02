@@ -20,6 +20,10 @@ import com.ch.wchhuangya.dzah.android.activity.customview.TextViewFlickerActivit
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewMultiBackgroundActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
+import com.ch.wchhuangya.dzah.android.activity.retrofit.getipins.RetrofitTestActivity;
+import com.ch.wchhuangya.dzah.android.activity.retrofit.github.GetContributorsActivity;
+import com.ch.wchhuangya.dzah.android.activity.retrofit.zhihu.GetLatestActivity;
+import com.ch.wchhuangya.dzah.android.activity.rxandroid.RxCreateActivity;
 import com.ch.wchhuangya.dzah.android.activity.rxandroid.RxAndroidActivity;
 import com.ch.wchhuangya.dzah.android.activity.rxandroid.ShowPhoneDBListActivity;
 import com.ch.wchhuangya.dzah.android.activity.sms.SendIntentSendToSmsActivity;
@@ -54,6 +58,8 @@ public class MainActivity extends BaseActivity {
     public static final String TAG_CUSTOM_VIEW = "CUSTOM_VIEW";
     /** 键值：子列表RxAndroid的TAG值 */
     public static final String TAG_RX_ANDROID = "RX_ANDROID";
+    /** 键值：子列表Retrofit的Tag值 */
+    public static final String TAG_RETROFIT = "RX_RETROFIT";
     /** 键值：子列表 ContentProvider 的TAG值 */
     public static final String TAG_CONTENT_PROVIDER = "CONTENT_PROVIDER";
     /** 键值：子列表 ContentProvider——Contacts Provider 的TAG值 */
@@ -105,21 +111,18 @@ public class MainActivity extends BaseActivity {
         mListView = (ListView) findViewById(R.id.main_listview);
         mAdapter = new SimpleAdapter(activity, mDataList, android.R.layout.simple_list_item_1, new String[]{KEY_TITLE}, new int[]{android.R.id.text1});
         mListView.setAdapter(mAdapter);
-        mListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Map<String, Object> map = mDataList.get(i);
+        mListView.setOnItemClickListener((adapterView, view, i, l) -> {
+            Map<String, Object> map = mDataList.get(i);
 
-                if (((boolean)map.get(KEY_HAS_CHILD))) { // 如果有下级
-                    mDataList = mDataMap.get(map.get(KEY_TAG));
-                    mHistoryStack.push(mDataMap.get(map.get(KEY_TAG)));
-                    mAdapter = new SimpleAdapter(activity, mDataList, android.R.layout.simple_list_item_1, new String[]{KEY_TITLE},
-                            new int[]{android.R.id.text1});
-                    mListView.setAdapter(mAdapter);
-                } else { // 如果没有下级,直接打开页面
-                    intent = new Intent(activity, (Class<?>) map.get(KEY_ACTIVITY));
-                    startActivity(intent);
-                }
+            if (((boolean)map.get(KEY_HAS_CHILD))) { // 如果有下级
+                mDataList = mDataMap.get(map.get(KEY_TAG));
+                mHistoryStack.push(mDataMap.get(map.get(KEY_TAG)));
+                mAdapter = new SimpleAdapter(activity, mDataList, android.R.layout.simple_list_item_1, new String[]{KEY_TITLE},
+                        new int[]{android.R.id.text1});
+                mListView.setAdapter(mAdapter);
+            } else { // 如果没有下级,直接打开页面
+                intent = new Intent(activity, (Class<?>) map.get(KEY_ACTIVITY));
+                startActivity(intent);
             }
         });
         mListView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
@@ -164,6 +167,14 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_ACTIVITY, "");
         mDataList.add(map);
 
+        // 初始化RxAndroid数据
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "Retrofit");
+        map.put(KEY_HAS_CHILD, true);
+        map.put(KEY_TAG, TAG_RETROFIT);
+        map.put(KEY_ACTIVITY, "");
+        mDataList.add(map);
+
         // 初始化内容提供器数据
         map = new HashMap<>();
         map.put(KEY_TITLE, "内容提供器");
@@ -185,6 +196,7 @@ public class MainActivity extends BaseActivity {
     private void initDataMap() {
         initCustomViewDataMap();
         initRxAndroidDataMap();
+        initRetrofitDataMap();
         initContentProviderDataMap();
         initContentProviderContactDataMap();
         initSMSDataMap();
@@ -257,7 +269,42 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_ACTIVITY, RxAndroidActivity.class);
         list.add(map);
 
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "创建操作");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, RxCreateActivity.class);
+        list.add(map);
+
         mDataMap.put(TAG_RX_ANDROID, list);
+    }
+
+    /** 初始化 Retrofit 二级数据 */
+    private void initRetrofitDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+
+        map.put(KEY_TITLE, "根据 IP 获取地理相关信息（繁）");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, RetrofitTestActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "获取 GitHub 某个仓库的贡献者列表");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, GetContributorsActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "获取知乎最新消息列表");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, GetLatestActivity.class);
+        list.add(map);
+
+        mDataMap.put(TAG_RETROFIT, list);
     }
 
     /** 初始化 ContentProvider 二级数据 */
