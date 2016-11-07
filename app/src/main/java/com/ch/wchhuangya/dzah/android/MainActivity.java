@@ -19,6 +19,7 @@ import com.ch.wchhuangya.dzah.android.activity.customview.TestCustomViewActivity
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewFlickerActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewMultiBackgroundActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
+import com.ch.wchhuangya.dzah.android.activity.databinding.CreateAndAssignActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.activity.retrofit.getipins.RetrofitTestActivity;
 import com.ch.wchhuangya.dzah.android.activity.retrofit.github.GetContributorsActivity;
@@ -60,6 +61,8 @@ public class MainActivity extends BaseActivity {
     public static final String TAG_RX_ANDROID = "RX_ANDROID";
     /** 键值：子列表Retrofit的Tag值 */
     public static final String TAG_RETROFIT = "RX_RETROFIT";
+    /** 键值：子列表Databinding的Tag值 */
+    public static final String TAG_DATABINDING = "DATABINDING";
     /** 键值：子列表 ContentProvider 的TAG值 */
     public static final String TAG_CONTENT_PROVIDER = "CONTENT_PROVIDER";
     /** 键值：子列表 ContentProvider——Contacts Provider 的TAG值 */
@@ -167,11 +170,19 @@ public class MainActivity extends BaseActivity {
         map.put(KEY_ACTIVITY, "");
         mDataList.add(map);
 
-        // 初始化RxAndroid数据
+        // 初始化Retrofit数据
         map = new HashMap<>();
         map.put(KEY_TITLE, "Retrofit");
         map.put(KEY_HAS_CHILD, true);
         map.put(KEY_TAG, TAG_RETROFIT);
+        map.put(KEY_ACTIVITY, "");
+        mDataList.add(map);
+
+        // 初始化Databinding数据
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "Databinding");
+        map.put(KEY_HAS_CHILD, true);
+        map.put(KEY_TAG, TAG_DATABINDING);
         map.put(KEY_ACTIVITY, "");
         mDataList.add(map);
 
@@ -197,6 +208,7 @@ public class MainActivity extends BaseActivity {
         initCustomViewDataMap();
         initRxAndroidDataMap();
         initRetrofitDataMap();
+        initDatabindingtDataMap();
         initContentProviderDataMap();
         initContentProviderContactDataMap();
         initSMSDataMap();
@@ -305,6 +317,27 @@ public class MainActivity extends BaseActivity {
         list.add(map);
 
         mDataMap.put(TAG_RETROFIT, list);
+    }
+
+    /** 初始化 Retrofit 二级数据 */
+    private void initDatabindingtDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+        Map<String, Object> map = new HashMap<>();
+
+        map.put(KEY_TITLE, "创建时绑定");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, CreateAndAssignActivity.class);
+        list.add(map);
+
+        map = new HashMap<>();
+        map.put(KEY_TITLE, "获取 GitHub 某个仓库的贡献者列表");
+        map.put(KEY_HAS_CHILD, false);
+        map.put(KEY_TAG, "");
+        map.put(KEY_ACTIVITY, GetContributorsActivity.class);
+        list.add(map);
+
+        mDataMap.put(TAG_DATABINDING, list);
     }
 
     /** 初始化 ContentProvider 二级数据 */
