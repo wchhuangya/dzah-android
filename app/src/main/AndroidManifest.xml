@@ -66,6 +66,7 @@
         <activity
             android:name=".activity.animation.RadiusChangedCircleActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.animation.SlidePicturesActivity" android:screenOrientation="portrait"/>
 
         <!-- apidemos start -->
 

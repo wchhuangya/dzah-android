@@ -6,6 +6,8 @@ import android.os.Handler;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import com.ch.wchhuangya.dzah.android.activity.animation.RadiusChangedCircleActivity;
+import com.ch.wchhuangya.dzah.android.activity.animation.SlidePicturesActivity;
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.CalendarProviderActivity;
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.CallsProviderActivity;
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.ContactsProviderActivity;
@@ -68,6 +70,8 @@ public class MainActivity extends BaseActivity {
     public static final String TAG_RECYCLERVIEW = "RECYCLERVIEW";
     /** 键值：子列表ViewPager的Tag值 */
     public static final String TAG_VIEWPAGER = "VIEWPAGER";
+    /** 键值：子列表Animation的Tag值 */
+    public static final String TAG_ANIMATION = "ANIMATION";
     /** 键值：子列表 ContentProvider 的TAG值 */
     public static final String TAG_CONTENT_PROVIDER = "CONTENT_PROVIDER";
     /** 键值：子列表 ContentProvider——Contacts Provider 的TAG值 */
@@ -165,6 +169,9 @@ public class MainActivity extends BaseActivity {
         // 初始化ViewPager数据
         addFirstLevelData("ViewPager", true, TAG_VIEWPAGER, null);
 
+        // 初始化ViewPager数据
+        addFirstLevelData("动画", true, TAG_ANIMATION, null);
+
         // 初始化内容提供器数据
         addFirstLevelData("内容提供器", true, TAG_CONTENT_PROVIDER, null);
 
@@ -198,6 +205,7 @@ public class MainActivity extends BaseActivity {
         initDatabindingDataMap();
         initRecyclerViewDataMap();
         initViewPagerDataMap();
+        initAnimationDataMap();
         initContentProviderDataMap();
         initContentProviderContactDataMap();
         initSMSDataMap();
@@ -265,6 +273,16 @@ public class MainActivity extends BaseActivity {
         addOtherLevelData(list, "仿推酷首页新闻列表", false, "", TuiCoolArticleActivity.class);
 
         mDataMap.put(TAG_VIEWPAGER, list);
+    }
+
+    /** 初始化 Animation 二级数据 */
+    private void initAnimationDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+
+        addOtherLevelData(list, "圆半径动态改变", false, "", RadiusChangedCircleActivity.class);
+        addOtherLevelData(list, "滑动查看图片", false, "", SlidePicturesActivity.class);
+
+        mDataMap.put(TAG_ANIMATION, list);
     }
 
     /** 初始化 ContentProvider 二级数据 */

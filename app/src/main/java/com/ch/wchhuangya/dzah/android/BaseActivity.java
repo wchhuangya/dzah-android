@@ -10,10 +10,12 @@ import android.os.PersistableBundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.ch.wchhuangya.dzah.android.util.Constant;
 import com.umeng.analytics.MobclickAgent;
 
 /**
@@ -145,5 +147,9 @@ public class BaseActivity extends FragmentActivity {
             showToast(msg);
         else
             showToast(customMsg);
+    }
+
+    protected void printError(Throwable throwable) {
+        Log.e(Constant.DZAH_TAG, "printError: 某些操作发生错误了——", throwable);
     }
 }
