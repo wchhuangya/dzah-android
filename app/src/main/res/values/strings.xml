@@ -32,6 +32,7 @@
     <string name="internal_storage_temp_path">创建临时文件</string>
     <string name="external_storage_public_path">获取外部存储公共目录</string>
     <string name="external_storage_private_path">获取外部存储私有目录</string>
+    <string name="random_generate_contact">随机生成联系人</string>
     <string-array name="external_storage_dir_type">
         <item>根目录</item>
         <item>闹钟</item>
@@ -45,4 +46,16 @@
         <item>明信片（声音）</item>
         <item>铃声（声音）</item>
     </string-array>
+    <string name="tui_cool_article_title">首页</string>
+
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_example">Example action</string>
+
+    <string name="action_settings">Settings</string>
 </resources>

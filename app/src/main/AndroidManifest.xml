@@ -197,7 +197,12 @@
         <activity
             android:name=".activity.retrofit.github.GetContributorsActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.retrofit.zhihu.GetLatestActivity" />
+        <activity android:name=".activity.retrofit.zhihu.GetLatestActivity"/>
+
+        <!-- recyclerview -->
+        <activity
+            android:name=".activity.recyclerview.ContactActivity"
+            android:screenOrientation="portrait"/>
 
         <!-- rxandroid -->
         <activity
@@ -214,6 +219,7 @@
         <activity
             android:name=".activity.viewpager.WeiChatVPActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.viewpager.TuiCoolArticleActivity" android:screenOrientation="portrait" android:label="@string/tui_cool_article_title"/>
 
         <!-- diycomponents -->
         <activity
@@ -224,7 +230,9 @@
         <activity
             android:name=".activity.databinding.HelloWorldActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.databinding.CreateAndAssignActivity" android:screenOrientation="portrait" />
+        <activity
+            android:name=".activity.databinding.CreateAndAssignActivity"
+            android:screenOrientation="portrait"/>
 
         <!-- ../service -->
         <service
