@@ -21,4 +21,9 @@
     <color name="audio_bar_chart_red">#EE3D11</color>
     <color name="audio_bar_chart_orange">#D5B32B</color>
 
+    <!-- 下拉刷新的三种颜色 -->
+    <color name="refresh_first">#ff0000</color>
+    <color name="refresh_second">#00ff00</color>
+    <color name="refresh_third">#0000ff</color>
+
 </resources>

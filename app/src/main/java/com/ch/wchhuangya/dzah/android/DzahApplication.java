@@ -10,7 +10,14 @@ import com.ch.wchhuangya.dzah.android.service.SmsService;
 import com.ch.wchhuangya.dzah.android.util.ActivityHelper;
 import com.ch.wchhuangya.dzah.android.util.Constant;
 import com.ch.wchhuangya.dzah.android.util.FileHelper;
+import com.nostra13.universalimageloader.cache.disc.impl.UnlimitedDiskCache;
+import com.nostra13.universalimageloader.core.DisplayImageOptions;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
+import com.nostra13.universalimageloader.utils.StorageUtils;
 import com.tencent.android.tpush.XGPushConfig;
+
+import java.io.File;
 
 /**
  * Application
@@ -41,5 +48,18 @@ public class DzahApplication extends Application {
         registerReceiver(receiver, filter);
 
         FileHelper.initDir();
+
+        File cacheDirectory = StorageUtils.getCacheDirectory(this);
+        DisplayImageOptions options = new DisplayImageOptions.Builder()
+                .cacheInMemory(false)
+                .showImageForEmptyUri(R.mipmap.pic_default)
+                .showImageOnFail(R.mipmap.pic_default)
+                .showImageOnLoading(R.mipmap.pic_default)
+                .build();
+        ImageLoaderConfiguration configuration = new ImageLoaderConfiguration.Builder(this)
+                .diskCache(new UnlimitedDiskCache(cacheDirectory))
+                .defaultDisplayImageOptions(options)
+                .build();
+        ImageLoader.getInstance().init(configuration);
     }
 }

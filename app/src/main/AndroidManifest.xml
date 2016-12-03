@@ -66,7 +66,9 @@
         <activity
             android:name=".activity.animation.RadiusChangedCircleActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.animation.SlidePicturesActivity" android:screenOrientation="portrait"/>
+        <activity
+            android:name=".activity.animation.SlidePicturesActivity"
+            android:screenOrientation="portrait"/>
 
         <!-- apidemos start -->
 
@@ -204,6 +206,7 @@
         <activity
             android:name=".activity.recyclerview.ContactActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.recyclerview.RefreshActivity" android:screenOrientation="portrait"/>
 
         <!-- rxandroid -->
         <activity
@@ -220,7 +223,10 @@
         <activity
             android:name=".activity.viewpager.WeiChatVPActivity"
             android:screenOrientation="portrait"/>
-        <activity android:name=".activity.viewpager.TuiCoolArticleActivity" android:screenOrientation="portrait" android:label="@string/tui_cool_article_title"/>
+        <activity
+            android:name=".activity.viewpager.TuiCoolArticleActivity"
+            android:label="@string/tui_cool_article_title"
+            android:screenOrientation="portrait"/>
 
         <!-- diycomponents -->
         <activity

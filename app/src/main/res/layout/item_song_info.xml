@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+    >
+    <data>
+        <variable
+            name="song"
+            type="com.ch.wchhuangya.dzah.android.model.Song"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        >
+
+        <TextView
+            android:id="@+id/song_info_order_name_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="15sp"
+            android:text="@{song.order + `《` + song.name + `》`}"
+            tools:text="01. 《可爱女人》"
+            />
+        <TextView
+            android:id="@+id/song_info_lyrics_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:layout_below="@+id/song_info_order_name_tv"
+            android:layout_marginTop="10dp"
+            android:text="@{`作词：` + song.lyrics}"
+            tools:text="作词：徐若瑄"
+            />
+        <TextView
+            android:id="@+id/song_info_arrangement_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textSize="13sp"
+            android:layout_marginRight="50dp"
+            android:layout_below="@+id/song_info_order_name_tv"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:text="@{`编曲：` + song.arrangement}"
+            tools:text="编曲：周杰伦"
+            />
+        <TextView
+            android:id="@+id/song_info_tune_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="13sp"
+            android:layout_below="@+id/song_info_lyrics_tv"
+            android:layout_marginTop="10dp"
+            android:text="@{`作曲：` + song.tune}"
+            tools:text="作曲：周杰伦"
+            />
+        <TextView
+            android:id="@+id/song_info_read_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="right"
+            android:textSize="13sp"
+            android:layout_marginRight="50dp"
+            android:layout_below="@+id/song_info_lyrics_tv"
+            android:layout_alignParentRight="true"
+            android:layout_marginTop="10dp"
+            android:text="@{`状态：` + song.state}"
+            tools:text="状态：会唱"
+            />
+
+    </RelativeLayout>
+</layout>

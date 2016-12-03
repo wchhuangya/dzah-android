@@ -2,6 +2,8 @@ package com.ch.wchhuangya.dzah.android.util;
 
 import android.provider.CallLog;
 
+import com.ch.wchhuangya.dzah.android.enums.AlbumSong;
+
 /**
  * 字符串助手类
  * Created by wchya on 16/10/17.
@@ -34,5 +36,31 @@ public class StringHelper {
                 return "未接";
         }
         return "未知";
+    }
+
+    /**
+     * 获取歌曲的序号
+     * @param number 数字排序
+     */
+    public static String getOrderOfSong(int number) {
+        if (number < 10)
+            return "0" + number + ". ";
+        else
+            return number + ". ";
+    }
+
+    /**
+     * 获取歌曲的状态
+     * @param state 歌曲状态的数字
+     */
+    public static String getStateOfSong(int state) {
+        if (state == AlbumSong.SONG_STATE_LISTENED.ordinal())
+            return "听过";
+        else if (state == AlbumSong.SONG_STATE_SINGED.ordinal())
+            return "会唱";
+        else if (state == AlbumSong.SONG_STATE_UNLISTENED.ordinal())
+            return "没听过";
+        else
+            return "听过不会唱";
     }
 }

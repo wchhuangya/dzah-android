@@ -22,6 +22,7 @@ import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
 import com.ch.wchhuangya.dzah.android.activity.databinding.CreateAndAssignActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.activity.recyclerview.ContactActivity;
+import com.ch.wchhuangya.dzah.android.activity.recyclerview.RefreshActivity;
 import com.ch.wchhuangya.dzah.android.activity.retrofit.getipins.RetrofitTestActivity;
 import com.ch.wchhuangya.dzah.android.activity.retrofit.github.GetContributorsActivity;
 import com.ch.wchhuangya.dzah.android.activity.retrofit.zhihu.GetLatestActivity;
@@ -169,7 +170,7 @@ public class MainActivity extends BaseActivity {
         // 初始化ViewPager数据
         addFirstLevelData("ViewPager", true, TAG_VIEWPAGER, null);
 
-        // 初始化ViewPager数据
+        // 初始化 动画 数据
         addFirstLevelData("动画", true, TAG_ANIMATION, null);
 
         // 初始化内容提供器数据
@@ -261,6 +262,7 @@ public class MainActivity extends BaseActivity {
         List<Map<String, Object>> list = new ArrayList<>();
 
         addOtherLevelData(list, "简单使用", false, "", ContactActivity.class);
+        addOtherLevelData(list, "下拉刷新", false, "", RefreshActivity.class);
 
         mDataMap.put(TAG_RECYCLERVIEW, list);
     }

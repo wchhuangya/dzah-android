@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout>
+    <data>
+        <variable
+            name="recyclerview"
+            type="com.ch.wchhuangya.dzah.android.model.CommonRecyclerView"/>
+    </data>
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                  xmlns:tools="http://schemas.android.com/tools"
+                  android:layout_width="match_parent"
+                  android:layout_height="match_parent"
+                  android:gravity="center"
+                  android:paddingBottom="50dp"
+                  android:orientation="vertical">
+
+        <ImageView
+            android:layout_width="140dp"
+            android:layout_height="140dp"
+            android:background="@mipmap/no_data"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:textColor="#222"
+            android:textSize="22sp"
+            android:text="@{recyclerview.tips}"
+            tools:text="暂无数据"
+            />
+
+    </LinearLayout>
+</layout>

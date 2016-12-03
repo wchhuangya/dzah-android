@@ -27,7 +27,7 @@ public class ContactAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     @Override
     public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new BindingViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.recycler_contact_item, parent, false));
+        return new BindingViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()), R.layout.recycler_contact_item, parent, false), null);
     }
 
     @Override

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+    >
+    <data>
+        <variable
+            name="album"
+            type="com.ch.wchhuangya.dzah.android.model.Album"/>
+    </data>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="15dp"
+        >
+
+        <ImageView
+            android:id="@+id/album_info_pic_iv"
+            android:layout_width="120dp"
+            android:layout_height="90dp"
+            android:scaleType="fitXY"
+            android:layout_marginRight="10dp"
+            app:localImg="@{album.imgResId}"
+            tools:background="@mipmap/pic_default"
+            />
+        <TextView
+            android:id="@+id/album_info_name_tv"
+            android:layout_width="match_parent"
+            android:layout_toRightOf="@+id/album_info_pic_iv"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:text="@{`专辑：《` + album.name + `》`}"
+            android:ellipsize="middle"
+            tools:text="专辑：《Jay》"
+            />
+        <TextView
+            android:id="@+id/album_info_time_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/album_info_pic_iv"
+            android:layout_below="@+id/album_info_name_tv"
+            android:layout_marginTop="14dp"
+            android:textSize="16sp"
+            android:text="@{`发行日期：` + album.time}"
+            tools:text="发行日期：2000 年 11 月 7 日"
+            />
+        <TextView
+            android:id="@+id/album_info_count_tv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_toRightOf="@+id/album_info_pic_iv"
+            android:layout_below="@+id/album_info_time_tv"
+            android:layout_marginTop="14dp"
+            android:textSize="16sp"
+            android:text="@{`收录歌曲数：` + album.count + ` 首`}"
+            tools:text="收录歌曲数：10 首"
+            />
+
+    </RelativeLayout>
+</layout>
