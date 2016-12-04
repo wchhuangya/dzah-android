@@ -2,6 +2,7 @@ package com.ch.wchhuangya.dzah.android.adapter;
 
 import android.databinding.DataBindingUtil;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
 
@@ -9,7 +10,9 @@ import com.ch.wchhuangya.dzah.android.BR;
 import com.ch.wchhuangya.dzah.android.R;
 import com.ch.wchhuangya.dzah.android.enums.AlbumSong;
 import com.ch.wchhuangya.dzah.android.model.Album;
+import com.ch.wchhuangya.dzah.android.model.CommonRecyclerView;
 import com.ch.wchhuangya.dzah.android.model.Song;
+import com.ch.wchhuangya.dzah.android.util.Constant;
 import com.ch.wchhuangya.dzah.android.util.StringHelper;
 
 import java.util.ArrayList;
@@ -23,6 +26,7 @@ import java.util.Map;
 public class RefreshAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     private List<Map<String, Object>> mData = new ArrayList<>();
+    private static final int ITEM_VIEW_TYPE_EMPTY = 0;
     private static final int ITEM_VIEW_TYPE_ALBUM = 1;
     private static final int ITEM_VIEW_TYPE_SONG = 2;
 
@@ -39,13 +43,18 @@ public class RefreshAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     @Override
     public int getItemViewType(int position) {
-        return position == 0 ? ITEM_VIEW_TYPE_ALBUM : ITEM_VIEW_TYPE_SONG;
+        return mData.size() == 0 ?  ITEM_VIEW_TYPE_EMPTY : (position == 0 ? ITEM_VIEW_TYPE_ALBUM : ITEM_VIEW_TYPE_SONG);
     }
 
     @Override
     public BindingViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
         BindingViewHolder viewHolder;
-        if (viewType == ITEM_VIEW_TYPE_ALBUM) {
+        if (viewType == ITEM_VIEW_TYPE_EMPTY) {
+            CommonRecyclerView commonRecyclerView = new CommonRecyclerView();
+            viewHolder = new BindingViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
+                    R.layout.common_nodata, parent, false), commonRecyclerView);
+            viewHolder.getBinding().setVariable(BR.recyclerview, commonRecyclerView);
+        } else if (viewType == ITEM_VIEW_TYPE_ALBUM) {
             Album album = new Album();
             viewHolder =  new BindingViewHolder(DataBindingUtil.inflate(LayoutInflater.from(parent.getContext()),
                     R.layout.item_album_info, parent, false), album);
@@ -61,26 +70,32 @@ public class RefreshAdapter extends RecyclerView.Adapter<BindingViewHolder> {
 
     @Override
     public void onBindViewHolder(BindingViewHolder holder, int position) {
-        Map<String, Object> map = mData.get(position);
-        if (position == 0) {
-            Album album = (Album) holder.getBinding().getRoot().getTag();
-            album.name.set(map.get(AlbumSong.ALBUM_NAME.getKey()).toString());
-            album.time.set(map.get(AlbumSong.ALBUM_PUBLISH_TIME.getKey()).toString());
-            album.count.set(Integer.parseInt(map.get(AlbumSong.ALBUM_SONGS_COUNT.getKey()).toString()));
-            album.imgResId.set(Integer.parseInt(map.get(AlbumSong.ALBUM_PIC.getKey()).toString()));
+        if (mData.size() == 0) {
+            CommonRecyclerView commonRecyclerView = (CommonRecyclerView) holder.getBinding().getRoot().getTag();
+            Log.d(Constant.DZAH_TAG, "onBindViewHolder: 位置位置位置——" + position);
+            commonRecyclerView.tips.set("当前是第" + (position + 1) + "个没有数据");
         } else {
-            Song song = (Song) holder.getBinding().getRoot().getTag();
-            song.order.set(StringHelper.getOrderOfSong(position));
-            song.name.set(map.get(AlbumSong.SONG_NAME.getKey()).toString());
-            song.lyrics.set(map.get(AlbumSong.SONG_LYRICS.getKey()).toString());
-            song.tune.set(map.get(AlbumSong.SONG_TUNE.getKey()).toString());
-            song.arrangement.set(map.get(AlbumSong.SONG_ARRANGEMENT.getKey()).toString());
-            song.state.set(StringHelper.getStateOfSong(Integer.parseInt(map.get(AlbumSong.SONG_STATE.getKey()).toString())));
+            Map<String, Object> map = mData.get(position);
+            if (position == 0) {
+                Album album = (Album) holder.getBinding().getRoot().getTag();
+                album.name.set(map.get(AlbumSong.ALBUM_NAME.getKey()).toString());
+                album.time.set(map.get(AlbumSong.ALBUM_PUBLISH_TIME.getKey()).toString());
+                album.count.set(Integer.parseInt(map.get(AlbumSong.ALBUM_SONGS_COUNT.getKey()).toString()));
+                album.imgResId.set(Integer.parseInt(map.get(AlbumSong.ALBUM_PIC.getKey()).toString()));
+            } else {
+                Song song = (Song) holder.getBinding().getRoot().getTag();
+                song.order.set(StringHelper.getOrderOfSong(position));
+                song.name.set(map.get(AlbumSong.SONG_NAME.getKey()).toString());
+                song.lyrics.set(map.get(AlbumSong.SONG_LYRICS.getKey()).toString());
+                song.tune.set(map.get(AlbumSong.SONG_TUNE.getKey()).toString());
+                song.arrangement.set(map.get(AlbumSong.SONG_ARRANGEMENT.getKey()).toString());
+                song.state.set(StringHelper.getStateOfSong(Integer.parseInt(map.get(AlbumSong.SONG_STATE.getKey()).toString())));
+            }
         }
     }
 
     @Override
     public int getItemCount() {
-        return mData.size();
+        return mData.size() > 0 ? mData.size() : 1;
     }
 }

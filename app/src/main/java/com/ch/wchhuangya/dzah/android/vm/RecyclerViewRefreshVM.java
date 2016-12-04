@@ -59,7 +59,7 @@ public class RecyclerViewRefreshVM extends BaseVM {
     private void fetchNewData() {
         mRecyclerview.rvShow.set(true);
         mRecyclerview.mpbShow.set(false);
-        mJaysAllDatas = RefreshActivity.getJaysAllDatas();
+//        mJaysAllDatas = RefreshActivity.getJaysAllDatas();
 //        mAdapter.setData(mJaysAllDatas.get(section), 0, mJaysAllDatas.get(section).size());
         if (section == mJaysAllDatas.size())
             section = 0;

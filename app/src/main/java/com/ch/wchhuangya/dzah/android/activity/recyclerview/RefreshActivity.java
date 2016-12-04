@@ -1,10 +1,12 @@
 package com.ch.wchhuangya.dzah.android.activity.recyclerview;
 
 import android.os.Bundle;
+import android.util.Log;
 
 import com.ch.wchhuangya.dzah.android.BaseActivity;
 import com.ch.wchhuangya.dzah.android.R;
 import com.ch.wchhuangya.dzah.android.enums.AlbumSong;
+import com.ch.wchhuangya.dzah.android.util.Constant;
 import com.ch.wchhuangya.dzah.android.vm.RecyclerViewRefreshVM;
 
 import java.util.ArrayList;
@@ -41,8 +43,10 @@ public class RefreshActivity extends BaseActivity {
     public static List<List<Map<String, Object>>> getJaysAllDatas() {
         List<List<Map<String, Object>>> finalList = new ArrayList<>();
 
+        List<Map<String, Object>> tempList = new ArrayList<>();
         finalList.add(getJayAlbumList());
         finalList.add(getFantasyAlbumList());
+        finalList.add(tempList);
         finalList.add(getEP1List());
         finalList.add(getBDKJAlbumList());
         finalList.add(getYHMAlbumList());
@@ -50,6 +54,8 @@ public class RefreshActivity extends BaseActivity {
         finalList.add(getQLXAlbumList());
         finalList.add(getEP3List());
         finalList.add(getSYYDXBAlbumList());
+
+        Log.d(Constant.DZAH_TAG, "getJaysAllDatas: 列表元素数：" + finalList.size());
 
         return finalList;
     }
