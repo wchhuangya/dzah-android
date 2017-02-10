@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/start_basic_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_basic_service"
+        android:onClick="forClick"
+        />
+
+    <Button
+        android:id="@+id/stop_basic_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stop_basic_service"
+        android:onClick="forClick"
+        />
+
+    <Button
+        android:id="@+id/start_intent_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/start_intent_service"
+        android:onClick="forClick"
+        />
+
+    <Button
+        android:id="@+id/stop_intent_service"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/stop_intent_service"
+        android:onClick="forClick"
+        />
+    <TextView
+        android:id="@+id/show_res"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        android:textColor="@android:color/black"
+        android:padding="10dp"
+        android:text="@string/res_show"
+        />
+
+</LinearLayout>

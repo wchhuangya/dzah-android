@@ -29,6 +29,8 @@ import com.ch.wchhuangya.dzah.android.activity.retrofit.zhihu.GetLatestActivity;
 import com.ch.wchhuangya.dzah.android.activity.rxandroid.RxAndroidActivity;
 import com.ch.wchhuangya.dzah.android.activity.rxandroid.RxCreateActivity;
 import com.ch.wchhuangya.dzah.android.activity.rxandroid.ShowPhoneDBListActivity;
+import com.ch.wchhuangya.dzah.android.activity.service.BindServiceBinderActivity;
+import com.ch.wchhuangya.dzah.android.activity.service.StartServiceActivity;
 import com.ch.wchhuangya.dzah.android.activity.sms.SendIntentSendToSmsActivity;
 import com.ch.wchhuangya.dzah.android.activity.sms.SendIntentViewSmsActivity;
 import com.ch.wchhuangya.dzah.android.activity.sms.SendSmsWithBroadcastBySmsManagerActivity;
@@ -59,6 +61,14 @@ public class MainActivity extends BaseActivity {
     public static final String KEY_HAS_CHILD = "HAS_CHILD";
     /** 键值：子列表的TAG */
     public static final String KEY_TAG = "TAG";
+    /** 键值：子列表四大组件的TAG值 */
+    public static final String TAG_FOUR_COMPONENTS = "FOUR_COMPONENTS";
+    /** 键值：子列表 Activity 的TAG值 */
+    public static final String TAG_ACTIVITY = "ACTIVITY";
+    /** 键值：子列表服务的TAG值 */
+    public static final String TAG_SERVICE = "SERVICE";
+    /** 键值：子列表广播的TAG值 */
+    public static final String TAG_BROADCAST = "BORADCAST";
     /** 键值：子列表自定义视图的TAG值 */
     public static final String TAG_CUSTOM_VIEW = "CUSTOM_VIEW";
     /** 键值：子列表RxAndroid的TAG值 */
@@ -128,11 +138,15 @@ public class MainActivity extends BaseActivity {
             Map<String, Object> map = mDataList.get(i);
 
             if (((boolean)map.get(KEY_HAS_CHILD))) { // 如果有下级
-                mDataList = mDataMap.get(map.get(KEY_TAG));
-                mHistoryStack.push(mDataMap.get(map.get(KEY_TAG)));
-                mAdapter = new SimpleAdapter(activity, mDataList, android.R.layout.simple_list_item_1, new String[]{KEY_TITLE},
-                        new int[]{android.R.id.text1});
-                mListView.setAdapter(mAdapter);
+                if (mDataMap.get(map.get(KEY_TAG)) != null) {
+                    mDataList = mDataMap.get(map.get(KEY_TAG));
+                    mHistoryStack.push(mDataMap.get(map.get(KEY_TAG)));
+                    mAdapter = new SimpleAdapter(activity, mDataList, android.R.layout.simple_list_item_1, new String[]{KEY_TITLE},
+                            new int[]{android.R.id.text1});
+                    mListView.setAdapter(mAdapter);
+                } else {
+                    showToast("内容还没有准备好，请仔细检查后再进行操作！");
+                }
             } else { // 如果没有下级,直接打开页面
                 intent = new Intent(activity, (Class<?>) map.get(KEY_ACTIVITY));
                 startActivity(intent);
@@ -151,6 +165,9 @@ public class MainActivity extends BaseActivity {
 
     /** 初始化一级数据 */
     private void initDataList() {
+
+        // 初始化自定义视图数据
+        addFirstLevelData("四大组件", true, TAG_FOUR_COMPONENTS, null);
 
         // 初始化自定义视图数据
         addFirstLevelData("自定义 View", true, TAG_CUSTOM_VIEW, null);
@@ -174,7 +191,7 @@ public class MainActivity extends BaseActivity {
         addFirstLevelData("动画", true, TAG_ANIMATION, null);
 
         // 初始化内容提供器数据
-        addFirstLevelData("内容提供器", true, TAG_CONTENT_PROVIDER, null);
+//        addFirstLevelData("内容提供器", true, TAG_CONTENT_PROVIDER, null);
 
         // 初始化内容提供器数据
         addFirstLevelData("短信", true, TAG_SMS, null);
@@ -200,6 +217,8 @@ public class MainActivity extends BaseActivity {
 
     /** 初始化一级以下的数据 */
     private void initDataMap() {
+        initFourComponentsDataMap();
+        initServiceDataMap();
         initCustomViewDataMap();
         initRxAndroidDataMap();
         initRetrofitDataMap();
@@ -210,6 +229,28 @@ public class MainActivity extends BaseActivity {
         initContentProviderDataMap();
         initContentProviderContactDataMap();
         initSMSDataMap();
+    }
+
+    /** 初始化四大组件二级数据 */
+    private void initFourComponentsDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+
+        addOtherLevelData(list, "Activity", true, TAG_ACTIVITY, null);
+        addOtherLevelData(list, "服务", true, TAG_SERVICE, null);
+        addOtherLevelData(list, "广播", true, TAG_BROADCAST, null);
+        addOtherLevelData(list, "内容提供器", true, TAG_CONTENT_PROVIDER, null);
+
+        mDataMap.put(TAG_FOUR_COMPONENTS, list);
+    }
+
+    /** 初始化自定义View二级数据 */
+    private void initServiceDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+
+        addOtherLevelData(list, "启动服务——Service", false, "", StartServiceActivity.class);
+        addOtherLevelData(list, "绑定服务——Binder", false, "", BindServiceBinderActivity.class);
+
+        mDataMap.put(TAG_SERVICE, list);
     }
 
     /** 初始化自定义View二级数据 */
@@ -292,7 +333,7 @@ public class MainActivity extends BaseActivity {
         List<Map<String, Object>> list = new ArrayList<>();
 
         addOtherLevelData(list, "日历内容提供器", false, "", CalendarProviderActivity.class);
-        addOtherLevelData(list, "联系人内容提供器", false, TAG_CONTENT_PROVIDER_CONTACTS, ContactsProviderActivity.class);
+        addOtherLevelData(list, "联系人内容提供器", true, TAG_CONTENT_PROVIDER_CONTACTS, null);
         addOtherLevelData(list, "通话记录内容提供器", false, "", CallsProviderActivity.class);
 
         mDataMap.put(TAG_CONTENT_PROVIDER, list);
