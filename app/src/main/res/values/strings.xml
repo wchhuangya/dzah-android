@@ -65,4 +65,10 @@
     <string name="start_intent_service">启动 IntentService</string>
     <string name="stop_intent_service">停止 IntentService</string>
     <string name="res_show">收到服务发送来的消息为：\n</string>
+    <string name="input_user_name">请输入用户名</string>
+    <string name="input_password">请输入密码</string>
+    <string name="login">登录</string>
+    <string name="error_username">用户名格式输入错误</string>
+    <string name="error_password">密码格式输入错误</string>
+    <string name="mvp_msg">位置 %d 被点击</string>
 </resources>

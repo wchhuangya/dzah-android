@@ -20,6 +20,7 @@ import com.ch.wchhuangya.dzah.android.activity.customview.TextViewFlickerActivit
 import com.ch.wchhuangya.dzah.android.activity.customview.TextViewMultiBackgroundActivity;
 import com.ch.wchhuangya.dzah.android.activity.customview.TopBarActivity;
 import com.ch.wchhuangya.dzah.android.activity.databinding.CreateAndAssignActivity;
+import com.ch.wchhuangya.dzah.android.activity.mvp.login.LoginActivity;
 import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.activity.recyclerview.ContactActivity;
 import com.ch.wchhuangya.dzah.android.activity.recyclerview.RefreshActivity;
@@ -89,6 +90,8 @@ public class MainActivity extends BaseActivity {
     public static final String TAG_CONTENT_PROVIDER_CONTACTS = "CONTENT_PROVIDER_CONTACTS";
     /** 键值：子列表 SMS 的TAG值 */
     public static final String TAG_SMS = "TAG_SMS";
+    /** 键值：子列表 代码结构 的TAG值 */
+    public static final String TAG_ARCHITECTURE = "TAG_ARCHITECTURE";
     /** 记录访问历史的Stack */
     private Stack<List<Map<String, Object>>> mHistoryStack = new Stack<>();
     /** 标识是否退出的变量 */
@@ -193,8 +196,11 @@ public class MainActivity extends BaseActivity {
         // 初始化内容提供器数据
 //        addFirstLevelData("内容提供器", true, TAG_CONTENT_PROVIDER, null);
 
-        // 初始化内容提供器数据
+        // 初始化短信数据
         addFirstLevelData("短信", true, TAG_SMS, null);
+
+        // 初始化代码结构数据
+        addFirstLevelData("代码结构", true, TAG_ARCHITECTURE, null);
     }
 
     private void addFirstLevelData(String title, boolean hasChild, String keyTag, Object activity) {
@@ -229,6 +235,7 @@ public class MainActivity extends BaseActivity {
         initContentProviderDataMap();
         initContentProviderContactDataMap();
         initSMSDataMap();
+        initArchitectureDataMap();
     }
 
     /** 初始化四大组件二级数据 */
@@ -359,6 +366,15 @@ public class MainActivity extends BaseActivity {
         addOtherLevelData(list, "使用 SmsManager 发送短信发广播", false, "", SendSmsWithBroadcastBySmsManagerActivity.class);
 
         mDataMap.put(TAG_SMS, list);
+    }
+
+    /** 初始化 代码结构 二级数据 */
+    private void initArchitectureDataMap() {
+        List<Map<String, Object>> list = new ArrayList<>();
+
+        addOtherLevelData(list, "登录示例", false, "", LoginActivity.class);
+
+        mDataMap.put(TAG_ARCHITECTURE, list);
     }
 
     @Override

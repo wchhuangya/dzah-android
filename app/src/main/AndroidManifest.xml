@@ -148,6 +148,12 @@
             android:name=".activity.files.ExternalStorageActivity"
             android:screenOrientation="portrait"/>
 
+        <!-- mvp -->
+        <activity android:name=".activity.mvp.login.LoginActivity"
+                  android:screenOrientation="portrait"/>
+        <activity android:name=".activity.mvp.main.MainActivity"
+                  android:screenOrientation="portrait"/>
+
         <!-- notification -->
         <activity
             android:name=".activity.notification.BasicNotificationActivity"
