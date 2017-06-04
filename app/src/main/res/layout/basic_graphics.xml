@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:padding="25dp"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:background="@color/white"
+    >
+    
+    <com.ch.wchhuangya.dzah.android.graphics.BasicGraphics
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        app:v_bg="#bbbbbb"
+        app:v_type="1"
+        app:v_paint_color="@color/red"
+        />
+
+    <com.ch.wchhuangya.dzah.android.graphics.BasicGraphics
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        app:v_bg="#bbbbbb"
+        app:v_type="2"
+        app:v_paint_color="@color/blue"
+        app:v_length="320"
+        />
+
+    <com.ch.wchhuangya.dzah.android.graphics.BasicGraphics
+        android:id="@+id/basic_graphics_bonut"
+        android:layout_width="match_parent"
+        android:layout_height="100dp"
+        app:v_bg="#bbbbbb"
+        app:v_type="3"
+        app:v_paint_color="@color/green"
+        app:v_rate="150"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        >
+        <com.ch.wchhuangya.dzah.android.graphics.BasicGraphics
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            app:v_bg="#bbbbbb"
+            app:v_type="4"
+            app:v_paint_color="@color/yellow"
+            />
+        <com.ch.wchhuangya.dzah.android.graphics.BasicGraphics
+            android:layout_width="0dp"
+            android:layout_height="100dp"
+            android:layout_weight="1"
+            app:v_bg="#bbbbcc"
+            app:v_type="5"
+            app:v_paint_color="@color/yellow"
+            />
+    </LinearLayout>
+
+</LinearLayout>

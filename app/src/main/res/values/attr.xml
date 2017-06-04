@@ -58,4 +58,12 @@
         <attr name="wholeBgColor" format="reference|color" /><!-- 整个的背影颜色,默认白色 -->
         <attr name="changeFrenquency" format="integer" /><!-- 条变化的频率,单位毫秒,默认 300 -->
     </declare-styleable>
+
+    <declare-styleable name="BasicGraphics">
+        <attr name="v_bg" format="reference|color" /><!-- View 的背景颜色 -->
+        <attr name="v_type" format="integer" /><!-- View 的类型，1-圆点，2-直线，3-折线 -->
+        <attr name="v_paint_color" format="reference|color" /><!-- 绘制 View 时画笔的颜色 -->
+        <attr name="v_length" format="integer" /><!-- 直线的长度 -->
+        <attr name="v_rate" format="integer" /><!-- 圆环的变化比率，单位毫秒 -->
+    </declare-styleable>
 </resources>

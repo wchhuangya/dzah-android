@@ -8,6 +8,7 @@ import android.widget.SimpleAdapter;
 
 import com.ch.wchhuangya.dzah.android.activity.animation.RadiusChangedCircleActivity;
 import com.ch.wchhuangya.dzah.android.activity.animation.SlidePicturesActivity;
+import com.ch.wchhuangya.dzah.android.activity.canvas.BasicGraphicsActivity;
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.CalendarProviderActivity;
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.CallsProviderActivity;
 import com.ch.wchhuangya.dzah.android.activity.contentprovider.ContactsProviderActivity;
@@ -169,7 +170,7 @@ public class MainActivity extends BaseActivity {
     /** 初始化一级数据 */
     private void initDataList() {
 
-        // 初始化自定义视图数据
+        // 初始化四大组件数据
         addFirstLevelData("四大组件", true, TAG_FOUR_COMPONENTS, null);
 
         // 初始化自定义视图数据
@@ -264,6 +265,7 @@ public class MainActivity extends BaseActivity {
     private void initCustomViewDataMap() {
         List<Map<String, Object>> list = new ArrayList<>();
 
+        addOtherLevelData(list, "基本图形绘制", false, "", BasicGraphicsActivity.class);
         addOtherLevelData(list, "自定义 View 的测量", false, "", MeasureModelActivity.class);
         addOtherLevelData(list, "自定义 TextView —— 双框", false, "", TextViewMultiBackgroundActivity.class);
         addOtherLevelData(list, "自定义 TextView —— 文本闪烁", false, "", TextViewFlickerActivity.class);

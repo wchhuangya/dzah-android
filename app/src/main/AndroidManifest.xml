@@ -126,6 +126,8 @@
         <activity
             android:name=".activity.customview.AudioBarChartActivity"
             android:screenOrientation="portrait"/>
+        <activity android:name=".activity.canvas.BasicGraphicsActivity"
+                  android:screenOrientation="portrait" />
 
         <!-- diycomponents -->
         <activity
