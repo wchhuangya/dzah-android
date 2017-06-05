@@ -23,9 +23,29 @@ public class ServiceGenerate {
                         .baseUrl(BASE_URL)
                         .addCallAdapterFactory(RxJavaCallAdapterFactory.create());
 
+    private static Retrofit.Builder noRxBuilder =
+            new Retrofit.Builder()
+                        .baseUrl(BASE_URL)
+                        ;
+
     /** 根据传入的接口转换为 Retrofit<T/> 的类型 */
-    public static <T> T createService(Class<T> serviceClass) {
-        Retrofit retrofit = builder.client(httpClient.build()).addConverterFactory(GsonConverterFactory.create()).build();
+    public static <T> T createService(Class<T> serviceClass, int type) {
+        Retrofit retrofit = getBuilder(type).client(httpClient.build()).addConverterFactory(GsonConverterFactory.create()).build();
         return retrofit.create(serviceClass);
+    }
+
+    /**
+     * 获取 Retrofit.Builder
+     * @param type 1-RxJavaBuilder；2-NoRxJavaBuilder；
+     */
+    private static Retrofit.Builder getBuilder(int type) {
+        switch (type) {
+            case 1:
+                return builder;
+            case 2:
+                return noRxBuilder;
+            default:
+                return noRxBuilder;
+        }
     }
 }

@@ -47,7 +47,7 @@ public class TuiCoolClient {
         if (!TextUtils.isEmpty(firstId))
             queryMap.put("first_id", firstId);
 
-        ServiceGenerate.createService(ArticleService.class).article(queryMap)
+        ServiceGenerate.createService(ArticleService.class, 1).article(queryMap)
                 .subscribeOn(Schedulers.io())
                 .unsubscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
