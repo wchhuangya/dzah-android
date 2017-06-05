@@ -52,7 +52,7 @@ public class GetContributorsActivity extends BaseActivity {
     }
 
     private void init() {
-        ServiceGenerate.createService(GitHubClient.class, 1)
+        ServiceGenerate.createService(GitHubClient.class, 1, "https://api.github.com/")
                 .contributors("square", "retrofit")
                 .flatMap(new Func1<List<Contributor>, Observable<Contributor>>() {
                     @Override

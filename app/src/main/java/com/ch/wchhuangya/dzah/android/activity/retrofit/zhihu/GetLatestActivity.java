@@ -50,7 +50,7 @@ public class GetLatestActivity extends BaseActivity {
     private void init() {
         mCommonListviewSearchLl.setVisibility(View.GONE);
 
-        ServiceGenerate.createService(ZhiHuClient.class, 1)
+        ServiceGenerate.createService(ZhiHuClient.class, 1, "http://news-at.zhihu.com/")
                 .latest()
                 .flatMap(new Func1<ZhiHuLatest, Observable<ZhiHuLatest.TopStoriesBean>>() {
                     @Override
