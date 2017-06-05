@@ -211,6 +211,7 @@
             android:name=".activity.recyclerview.ContactActivity"
             android:screenOrientation="portrait"/>
         <activity android:name=".activity.recyclerview.RefreshActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.recyclerview.HongYangTutorialActivity" android:screenOrientation="portrait"/>
 
         <!-- rxandroid -->
         <activity
