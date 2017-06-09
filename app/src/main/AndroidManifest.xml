@@ -213,6 +213,7 @@
         <activity android:name=".activity.recyclerview.RefreshActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.recyclerview.HongYangTutorialActivity" android:screenOrientation="portrait"/>
         <activity android:name=".activity.recyclerview.XampRVActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".activity.recyclerview.TaoBaoGridActivity" android:screenOrientation="portrait"/>
 
         <!-- rxandroid -->
         <activity

@@ -26,6 +26,7 @@ import com.ch.wchhuangya.dzah.android.activity.provider.SmsPVActivity;
 import com.ch.wchhuangya.dzah.android.activity.recyclerview.ContactActivity;
 import com.ch.wchhuangya.dzah.android.activity.recyclerview.HongYangTutorialActivity;
 import com.ch.wchhuangya.dzah.android.activity.recyclerview.RefreshActivity;
+import com.ch.wchhuangya.dzah.android.activity.recyclerview.TaoBaoGridActivity;
 import com.ch.wchhuangya.dzah.android.activity.recyclerview.XampRVActivity;
 import com.ch.wchhuangya.dzah.android.activity.retrofit.getipins.RetrofitTestActivity;
 import com.ch.wchhuangya.dzah.android.activity.retrofit.github.GetContributorsActivity;
@@ -317,6 +318,7 @@ public class MainActivity extends BaseActivity {
         addOtherLevelData(list, "下拉刷新", false, "", RefreshActivity.class);
         addOtherLevelData(list, "鸿洋博客示例", false, "", HongYangTutorialActivity.class);
         addOtherLevelData(list, "雄安列表", false, "", XampRVActivity.class);
+        addOtherLevelData(list, "仿淘宝Grid", false, "", TaoBaoGridActivity.class);
 
         mDataMap.put(TAG_RECYCLERVIEW, list);
     }
